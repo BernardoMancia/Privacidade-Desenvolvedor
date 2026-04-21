@@ -26,13 +26,13 @@ window.i18n = {
     en: 'Clean code,<br />exceptional experiences'
   },
   'about.subtitle': {
-    pt: 'Desenvolvo aplicativos Android do zero à publicação, com foco em performance, segurança e UX premium. Cada projeto é tratado como produto — não apenas como código.',
-    en: 'I develop Android apps from scratch to publication, focused on performance, security, and premium UX. Every project is treated as a product — not just code.'
+    pt: 'Desenvolvo aplicativos Android do zero à publicação, com foco em performance, segurança e UX premium. Crio também programas e scripts otimizados, com segurança em cada linha. Cada projeto é tratado como produto — não apenas como código.',
+    en: 'I develop Android apps from scratch to publication, focused on performance, security, and premium UX. I also build optimized programs and scripts with security at every layer. Every project is treated as a product — not just code.'
   },
   'about.card.role': { pt: 'Fullstack Developer & Indie Maker', en: 'Fullstack Developer & Indie Maker' },
   'about.card.bio':  {
-    pt: 'Desenvolvedor fullstack apaixonado por construir produtos completos — do backend robusto em Python ao app mobile publicado na Play Store. Cada projeto é tratado com atenção obsessiva a performance, segurança e UX.',
-    en: 'Fullstack developer passionate about building complete products — from robust Python backends to mobile apps on the Play Store. Every project gets obsessive attention to performance, security, and UX.'
+    pt: 'Desenvolvedor fullstack apaixonado por construir produtos completos — do backend robusto em Python ao app mobile publicado na Play Store. Crio programas e scripts otimizados com foco em segurança e confiabilidade. Cada projeto recebe atenção obsessiva a performance, segurança e UX.',
+    en: 'Fullstack developer passionate about building complete products — from robust Python backends to mobile apps on the Play Store. I build optimized programs and scripts with a focus on security and reliability. Every project gets obsessive attention to performance, security, and UX.'
   },
   'about.badge': { pt: 'Stack favorita', en: 'Favorite stack' },
 
