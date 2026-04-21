@@ -86,7 +86,7 @@ window.i18n = {
      POLICY PAGES — SHARED
   ════════════════════════════════════════════════════ */
   'policy.label':   { pt: 'Política de Privacidade', en: 'Privacy Policy' },
-  'policy.updated': { pt: 'Última atualização: 21 de abril de 2024', en: 'Last updated: April 21, 2024' },
+  'policy.updated': { pt: 'Última atualização: 21 de abril de 2025', en: 'Last updated: April 21, 2025' },
   'policy.country': { pt: 'Desenvolvido no Brasil',  en: 'Developed in Brazil' },
   'policy.toc.title': { pt: 'Índice', en: 'Table of Contents' },
 
