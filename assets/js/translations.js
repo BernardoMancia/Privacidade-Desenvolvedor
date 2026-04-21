@@ -26,13 +26,13 @@ window.i18n = {
     en: 'Clean code,<br />exceptional experiences'
   },
   'about.subtitle': {
-    pt: 'Desenvolvo aplicativos Android do zero à publicação, com foco em performance, segurança e UX premium. Crio também programas e scripts otimizados, com segurança em cada linha. Cada projeto é tratado como produto — não apenas como código.',
-    en: 'I develop Android apps from scratch to publication, focused on performance, security, and premium UX. I also build optimized programs and scripts with security at every layer. Every project is treated as a product — not just code.'
+    pt: 'Especializado em backend com Python e FastAPI — crio APIs robustas, scripts otimizados e sistemas seguros. Quando necessário, levo a solução até o front: mobile com React Native ou aplicações web.',
+    en: 'Specialized in backend with Python and FastAPI — building robust APIs, optimized scripts, and secure systems. When needed, I take the solution all the way to the front: mobile with React Native or web apps.'
   },
   'about.card.role': { pt: 'Fullstack Developer & Indie Maker', en: 'Fullstack Developer & Indie Maker' },
   'about.card.bio':  {
-    pt: 'Desenvolvedor fullstack apaixonado por construir produtos completos — do backend robusto em Python ao app mobile publicado na Play Store. Crio programas e scripts otimizados com foco em segurança e confiabilidade. Cada projeto recebe atenção obsessiva a performance, segurança e UX.',
-    en: 'Fullstack developer passionate about building complete products — from robust Python backends to mobile apps on the Play Store. I build optimized programs and scripts with a focus on security and reliability. Every project gets obsessive attention to performance, security, and UX.'
+    pt: 'Desenvolvedor com foco em backend — Python, FastAPI e automações seguras. Crio também aplicativos mobile, programas e scripts otimizados quando necessário. Do servidor à tela, entrego a solução completa.',
+    en: 'Developer focused on backend — Python, FastAPI, and secure automations. I also build mobile apps, programs, and optimized scripts when needed. From server to screen, I deliver the full solution.'
   },
   'about.badge': { pt: 'Stack favorita', en: 'Favorite stack' },
 
