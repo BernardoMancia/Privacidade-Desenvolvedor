@@ -660,10 +660,11 @@
           Mancia Studios
         </a>
         <ul class="nav-links" role="list">
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#apps">Apps</a></li>
-          <li><a href="#contact" class="nav-cta">Contato</a></li>
+          <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+          <li><a href="#apps" data-i18n="nav.apps">Apps</a></li>
+          <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contato</a></li>
         </ul>
+        <button id="lang-toggle" class="lang-btn" onclick="toggleLang()" aria-label="Switch to English">EN</button>
       </div>
     </div>
   </nav>
@@ -674,37 +675,37 @@
       <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
       <div class="container">
         <div class="hero-content">
-          <div class="hero-eyebrow" aria-label="Status: disponível para projetos">
+          <div class="hero-eyebrow" aria-label="Status">
             <div class="blink" aria-hidden="true"></div>
-            Disponível para projetos
+            <span data-i18n="hero.eyebrow">Disponível para projetos</span>
           </div>
           <h1 class="hero-title" id="hero-heading">
-            Construindo apps<br />
-            <span class="gradient">que as pessoas amam</span>
+            <span data-i18n="hero.title1">Construindo apps</span><br />
+            <span class="gradient" data-i18n="hero.title2">que as pessoas amam</span>
           </h1>
-          <p class="hero-subtitle">
-            Estúdio independente de desenvolvimento mobile focado em experiências
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Estúdio independente de desenvolvimento focado em experiências
             Android premium — da arquitetura ao design, do protótipo à Play Store.
           </p>
           <div class="hero-actions">
             <a href="#apps" class="btn btn-primary" id="hero-cta-apps">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-              Ver apps publicados
+              <span data-i18n="hero.cta1">Ver apps publicados</span>
             </a>
-            <a href="#contact" class="btn btn-outline" id="hero-cta-contact">Falar comigo</a>
+            <a href="#contact" class="btn btn-outline" id="hero-cta-contact" data-i18n="hero.cta2">Falar comigo</a>
           </div>
           <div class="hero-stats" role="list" aria-label="Estatísticas">
             <div class="stat-item" role="listitem">
               <div class="stat-number">3<span>+</span></div>
-              <div class="stat-label">Apps publicados</div>
+              <div class="stat-label" data-i18n="hero.stat1">Apps publicados</div>
             </div>
             <div class="stat-item" role="listitem">
               <div class="stat-number">100<span>%</span></div>
-              <div class="stat-label">Código próprio</div>
+              <div class="stat-label" data-i18n="hero.stat2">Código próprio</div>
             </div>
             <div class="stat-item" role="listitem">
               <div class="stat-number">2025<span></span></div>
-              <div class="stat-label">Ativo desde</div>
+              <div class="stat-label" data-i18n="hero.stat3">Ativo desde</div>
             </div>
           </div>
         </div>
@@ -722,8 +723,8 @@
             <div class="about-card">
               <div class="about-avatar" aria-hidden="true">M</div>
               <div class="about-card-name">Mancia Studios</div>
-              <div class="about-card-role">Fullstack Developer &amp; Indie Maker</div>
-              <p class="about-card-bio">
+              <div class="about-card-role" data-i18n="about.card.role">Fullstack Developer &amp; Indie Maker</div>
+              <p class="about-card-bio" data-i18n="about.card.bio">
                 Desenvolvedor fullstack apaixonado por construir produtos completos —
                 do backend robusto em Python ao app mobile publicado na Play Store.
                 Cada projeto é tratado com atenção obsessiva a performance, segurança e UX.
@@ -732,18 +733,18 @@
             <div class="about-float-badge" aria-hidden="true">
               <div class="icon">🐍</div>
               <div>
-                <div class="text-sm">Stack favorita</div>
+                <div class="text-sm" data-i18n="about.badge">Stack favorita</div>
                 <div class="text-main">Python · FastAPI</div>
               </div>
             </div>
           </div>
 
           <div class="about-text">
-            <p class="section-label reveal">Sobre mim</p>
-            <h2 class="section-title reveal reveal-delay-1" id="about-heading">
+            <p class="section-label reveal" data-i18n="about.label">Sobre mim</p>
+            <h2 class="section-title reveal reveal-delay-1" id="about-heading" data-i18n-html="about.title">
               Código limpo,<br />experiências excepcionais
             </h2>
-            <p class="section-subtitle reveal reveal-delay-2">
+            <p class="section-subtitle reveal reveal-delay-2" data-i18n="about.subtitle">
               Desenvolvo aplicativos Android do zero à publicação,
               com foco em performance, segurança e UX premium.
               Cada projeto é tratado como produto — não apenas como código.
@@ -752,27 +753,27 @@
             <div class="tech-grid reveal reveal-delay-3" role="list" aria-label="Tecnologias utilizadas">
               <div class="tech-item" role="listitem">
                 <span class="tech-icon">🐍</span>
-                <span class="tech-name">Python / FastAPI</span>
+                <span class="tech-name" data-i18n="tech.python">Python / FastAPI</span>
               </div>
               <div class="tech-item" role="listitem">
                 <span class="tech-icon">🗄️</span>
-                <span class="tech-name">PostgreSQL / SQLite</span>
+                <span class="tech-name" data-i18n="tech.db">PostgreSQL / SQLite</span>
               </div>
               <div class="tech-item" role="listitem">
                 <span class="tech-icon">⚛️</span>
-                <span class="tech-name">React Native / Expo</span>
+                <span class="tech-name" data-i18n="tech.rn">React Native / Expo</span>
               </div>
               <div class="tech-item" role="listitem">
                 <span class="tech-icon">🟦</span>
-                <span class="tech-name">TypeScript</span>
+                <span class="tech-name" data-i18n="tech.ts">TypeScript</span>
               </div>
               <div class="tech-item" role="listitem">
                 <span class="tech-icon">🐧</span>
-                <span class="tech-name">Linux / VPS Deploy</span>
+                <span class="tech-name" data-i18n="tech.linux">Linux / VPS Deploy</span>
               </div>
               <div class="tech-item" role="listitem">
                 <span class="tech-icon">🐳</span>
-                <span class="tech-name">Docker / CI/CD</span>
+                <span class="tech-name" data-i18n="tech.docker">Docker / CI/CD</span>
               </div>
             </div>
           </div>
@@ -786,9 +787,9 @@
       <div class="container">
         <div class="apps-header">
           <div>
-            <p class="section-label reveal">Google Play Store</p>
-            <h2 class="section-title reveal reveal-delay-1" id="apps-heading">Apps publicados</h2>
-            <p class="section-subtitle reveal reveal-delay-2">
+            <p class="section-label reveal" data-i18n="apps.label">Google Play Store</p>
+            <h2 class="section-title reveal reveal-delay-1" id="apps-heading" data-i18n="apps.title">Apps publicados</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-i18n="apps.subtitle">
               Aplicativos desenvolvidos e publicados na Google Play,
               cada um com sua política de privacidade dedicada.
             </p>
@@ -801,10 +802,10 @@
               <div class="app-icon app-icon-sentio" aria-hidden="true">💜</div>
               <div class="app-card-info">
                 <h3 class="app-name" id="app-sentio-name">Sentio</h3>
-                <div class="app-category">Bem-estar · Saúde Mental</div>
+                <div class="app-category" data-i18n="sentio.category">Bem-estar · Saúde Mental</div>
               </div>
             </div>
-            <p class="app-description">
+            <p class="app-description" data-i18n="sentio.desc">
               Aplicativo de bem-estar emocional com contador de momentos significativos,
               rastreamento de humor e insights diários para uma vida mais consciente.
             </p>
@@ -818,9 +819,9 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.99 1.48-.5l14 8.5a.56.56 0 010 1L4.48 21c-.48.49-1.48.33-1.48-.5z"/></svg>
                 Google Play
               </a>
-              <a href="/policies/sentio" class="app-btn app-btn-policy" id="sentio-policy-link" aria-label="Política de privacidade do Sentio">
+              <a href="policies/sentio/" class="app-btn app-btn-policy" id="sentio-policy-link" aria-label="Política de privacidade do Sentio">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Política
+                <span data-i18n="app.policy.btn">Política</span>
               </a>
             </div>
           </article>
@@ -830,10 +831,10 @@
               <div class="app-icon app-icon-guardalinha" aria-hidden="true">🛡️</div>
               <div class="app-card-info">
                 <h3 class="app-name" id="app-guardalinha-name">GuardaLinha</h3>
-                <div class="app-category">Ferramentas · Segurança</div>
+                <div class="app-category" data-i18n="guardalinha.category">Ferramentas · Segurança</div>
               </div>
             </div>
-            <p class="app-description">
+            <p class="app-description" data-i18n="guardalinha.desc">
               Bloqueador de chamadas inteligente para Android. Proteção contra
               telemarketing, golpistas e números indesejados com gerenciamento
               simplificado de listas negras.
@@ -848,9 +849,9 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.99 1.48-.5l14 8.5a.56.56 0 010 1L4.48 21c-.48.49-1.48.33-1.48-.5z"/></svg>
                 Google Play
               </a>
-              <a href="/policies/guardalinha" class="app-btn app-btn-policy" id="guardalinha-policy-link" aria-label="Política de privacidade do GuardaLinha">
+              <a href="policies/guardalinha/" class="app-btn app-btn-policy" id="guardalinha-policy-link" aria-label="Política de privacidade do GuardaLinha">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Política
+                <span data-i18n="app.policy.btn">Política</span>
               </a>
             </div>
           </article>
@@ -860,10 +861,10 @@
               <div class="app-icon app-icon-hive" aria-hidden="true">🐝</div>
               <div class="app-card-info">
                 <h3 class="app-name" id="app-hive-name">Hive Chat</h3>
-                <div class="app-category">Comunicação · P2P</div>
+                <div class="app-category" data-i18n="hive.category">Comunicação · P2P</div>
               </div>
             </div>
-            <p class="app-description">
+            <p class="app-description" data-i18n="hive.desc">
               Mensageiro descentralizado P2P sem servidor central. Comunicação
               privada e resiliente usando tecnologia GunDB — seus dados pertencem
               só a você.
@@ -878,9 +879,9 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.99 1.48-.5l14 8.5a.56.56 0 010 1L4.48 21c-.48.49-1.48.33-1.48-.5z"/></svg>
                 Google Play
               </a>
-              <a href="/policies/hive-chat" class="app-btn app-btn-policy" id="hive-policy-link" aria-label="Política de privacidade do Hive Chat">
+              <a href="policies/hive-chat/" class="app-btn app-btn-policy" id="hive-policy-link" aria-label="Política de privacidade do Hive Chat">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Política
+                <span data-i18n="app.policy.btn">Política</span>
               </a>
             </div>
           </article>
@@ -893,9 +894,9 @@
     <section id="contact" class="section" aria-labelledby="contact-heading">
       <div class="container">
         <div class="contact-wrapper">
-          <p class="section-label reveal">Contato</p>
-          <h2 class="section-title reveal reveal-delay-1" id="contact-heading">Vamos conversar</h2>
-          <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto;">
+          <p class="section-label reveal" data-i18n="contact.label">Contato</p>
+          <h2 class="section-title reveal reveal-delay-1" id="contact-heading" data-i18n="contact.title">Vamos conversar</h2>
+          <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto;" data-i18n="contact.subtitle">
             Tem uma ideia de app, parceria ou apenas quer trocar uma ideia?
             Estou disponível para conversas sobre projetos mobile.
           </p>
@@ -914,12 +915,12 @@
     <div class="container">
       <div class="footer-inner">
         <p class="footer-left">
-          © <span id="footer-year"></span> Mancia Studios. Feito com ☕ no Brasil.
+          © <span id="footer-year"></span> Mancia Studios. <span data-i18n="footer.credit">Feito com ☕ no Brasil.</span>
         </p>
         <ul class="footer-links" role="list" aria-label="Links do rodapé">
-          <li><a href="/policies/sentio" id="footer-policy-sentio">Política — Sentio</a></li>
-          <li><a href="/policies/guardalinha" id="footer-policy-guardalinha">Política — GuardaLinha</a></li>
-          <li><a href="/policies/hive-chat" id="footer-policy-hive">Política — Hive Chat</a></li>
+          <li><a href="policies/sentio/" id="footer-policy-sentio" data-i18n="footer.policy.sentio">Política — Sentio</a></li>
+          <li><a href="policies/guardalinha/" id="footer-policy-guardalinha" data-i18n="footer.policy.guardalinha">Política — GuardaLinha</a></li>
+          <li><a href="policies/hive-chat/" id="footer-policy-hive" data-i18n="footer.policy.hive">Política — Hive Chat</a></li>
         </ul>
       </div>
     </div>
@@ -928,6 +929,8 @@
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

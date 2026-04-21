@@ -3,44 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidade — Hive Chat | Mancia Studios</title>
-  <meta name="description" content="Política de privacidade do Hive Chat, aplicativo de mensagens P2P descentralizado desenvolvido pela Mancia Studios." />
+  <title>Privacy Policy — Hive Chat | Mancia Studios</title>
+  <meta name="description" content="Privacy policy for the Hive Chat decentralized P2P messenger by Mancia Studios." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://manciastudios.com/policies/hive-chat" />
+  <link rel="canonical" href="https://manciastudios.com/policies/hive-chat/" />
+  <link rel="stylesheet" href="../../assets/css/global.css" />
   <link rel="stylesheet" href="../../assets/css/policy.css" />
+  <style>
+    .policy-nav .container { display: flex; align-items: center; justify-content: space-between; }
+  </style>
 </head>
 <body>
 
   <nav class="policy-nav" aria-label="Navegação">
     <div class="container">
-      <a href="/" class="nav-logo" aria-label="Ir para Mancia Studios">
+      <a href="../../" class="nav-logo" aria-label="Ir para Mancia Studios">
         Mancia<span>Studios</span>
       </a>
-      <a href="/" class="nav-back" id="nav-back-btn" aria-label="Voltar ao portfólio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
-        Voltar ao portfólio
-      </a>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a href="../../" class="nav-back" id="nav-back-btn" data-i18n="nav.back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+          Voltar ao portfólio
+        </a>
+        <button id="lang-toggle" class="lang-btn" onclick="toggleLang()" aria-label="Switch to English">EN</button>
+      </div>
     </div>
   </nav>
 
   <header class="policy-hero">
     <div class="container">
-      <div class="app-tag" aria-label="Aplicativo: Hive Chat">
+      <div class="app-tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Política de Privacidade
+        <span data-i18n="policy.label">Política de Privacidade</span>
       </div>
       <h1>
         Hive Chat —
-        <span>Mensageiro Descentralizado P2P</span>
+        <span data-i18n="hive.policy.subtitle">Mensageiro P2P Descentralizado</span>
       </h1>
-      <div class="policy-meta" role="list" aria-label="Informações da política">
+      <div class="policy-meta" role="list">
         <div class="policy-meta-item" role="listitem">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Última atualização: 21 de abril de 2025
+          <span data-i18n="policy.updated">Última atualização: 21 de abril de 2025</span>
         </div>
         <div class="policy-meta-item" role="listitem">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Desenvolvido no Brasil
+          <span data-i18n="policy.country">Desenvolvido no Brasil</span>
         </div>
         <div class="policy-meta-item" role="listitem">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
@@ -53,244 +60,144 @@
   <main class="policy-body">
 
     <nav class="toc" aria-label="Índice da política">
-      <div class="toc-title">Índice</div>
+      <div class="toc-title" data-i18n="policy.toc.title">Índice</div>
       <ol class="toc-list" role="list">
-        <li><a href="#natureza">1. Natureza descentralizada do Hive Chat</a></li>
-        <li><a href="#coleta">2. Dados que coletamos</a></li>
-        <li><a href="#mensagens">3. Suas mensagens</a></li>
-        <li><a href="#uso">4. Como usamos suas informações</a></li>
-        <li><a href="#gundb">5. Tecnologia GunDB e relays P2P</a></li>
-        <li><a href="#terceiros">6. Compartilhamento com terceiros</a></li>
-        <li><a href="#retencao">7. Retenção e exclusão</a></li>
-        <li><a href="#direitos">8. Seus direitos (LGPD)</a></li>
-        <li><a href="#alteracoes">9. Alterações nesta política</a></li>
-        <li><a href="#contato">10. Contato</a></li>
+        <li><a href="#arquitetura"  data-i18n="hive.toc.1">1. Arquitetura e dados coletados</a></li>
+        <li><a href="#uso"          data-i18n="hive.toc.2">2. Como usamos suas informações</a></li>
+        <li><a href="#gundb"        data-i18n="hive.toc.3">3. Rede P2P e GunDB</a></li>
+        <li><a href="#terceiros"    data-i18n="hive.toc.4">4. Compartilhamento com terceiros</a></li>
+        <li><a href="#retencao"     data-i18n="hive.toc.5">5. Retenção e exclusão</a></li>
+        <li><a href="#direitos"     data-i18n="hive.toc.6">6. Seus direitos (LGPD)</a></li>
+        <li><a href="#criancas"     data-i18n="hive.toc.7">7. Privacidade de crianças</a></li>
+        <li><a href="#alteracoes"   data-i18n="hive.toc.8">8. Alterações nesta política</a></li>
+        <li><a href="#contato"      data-i18n="hive.toc.9">9. Contato</a></li>
       </ol>
     </nav>
 
-    <div class="policy-section" id="natureza">
+    <div class="policy-section" id="arquitetura">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        </span>
-        1. Natureza descentralizada do Hive Chat
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+        <span data-i18n="hive.s1.title">1. Arquitetura e dados coletados</span>
       </h2>
-      <p>
-        O Hive Chat é um mensageiro <strong>peer-to-peer (P2P) totalmente descentralizado</strong>.
-        Isso significa que não existe um servidor central controlado pela Mancia Studios que armazene
-        suas mensagens ou seus dados pessoais.
-      </p>
-      <p>
-        A comunicação entre usuários ocorre através de uma rede distribuída de <strong>relays públicos GunDB</strong>,
-        mantidos pela comunidade open-source, sobre os quais a Mancia Studios não possui controle ou acesso.
-      </p>
-      <div class="info-box" role="note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        <span><strong>A Mancia Studios não armazena, não lê e não tem acesso a nenhuma das suas mensagens.</strong> Isso é garantido pela arquitetura descentralizada do app.</span>
-      </div>
-    </div>
-
-    <div class="policy-section" id="coleta">
-      <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        </span>
-        2. Dados que coletamos
-      </h2>
-      <p>O Hive Chat coleta o mínimo possível para seu funcionamento:</p>
-      <ul>
-        <li>
-          <strong>Nome de usuário (alias):</strong> o nome que você escolhe ao criar seu perfil no app.
-          Não é necessário fornecer nome real, e-mail ou telefone.
-        </li>
-        <li>
-          <strong>Chave pública criptográfica:</strong> gerada localmente e usada como sua identidade
-          única na rede P2P. Não está vinculada à sua identidade real.
-        </li>
-        <li>
-          <strong>Dados de uso anônimos:</strong> métricas agregadas sobre funcionalidades utilizadas,
-          sem qualquer informação pessoal identificável.
-        </li>
-      </ul>
-      <p>
-        <strong>Não coletamos:</strong> número de telefone, e-mail, localização, lista de contatos,
-        ou qualquer outro dado pessoal além do alias escolhido por você.
-      </p>
-    </div>
-
-    <div class="policy-section" id="mensagens">
-      <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </span>
-        3. Suas mensagens
-      </h2>
-      <p>
-        As mensagens trocadas no Hive Chat são propagadas através da rede P2P GunDB.
-        Por se tratar de uma rede pública descentralizada, é importante que você compreenda:
-      </p>
-      <ul>
-        <li>
-          Mensagens transitam por <strong>relays públicos</strong> mantidos por terceiros da comunidade GunDB.
-          Esses relays podem armazenar cópias temporárias para sincronização;
-        </li>
-        <li>
-          <strong>A Mancia Studios não controla os relays públicos</strong> e não pode garantir
-          o comportamento de terceiros que os mantêm;
-        </li>
-        <li>
-          Recomendamos não compartilhar informações sensíveis, confidenciais ou privadas via Hive Chat.
-        </li>
-      </ul>
-      <div class="info-box" role="note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>Estamos continuamente trabalhando para implementar <strong>criptografia end-to-end</strong> nas próximas versões do app.</span>
+      <div data-i18n-html="hive.s1.body">
+        <p>O Hive Chat é um mensageiro <strong>completamente descentralizado</strong>. Não existe servidor central da Mancia Studios armazenando suas mensagens ou dados pessoais.</p>
+        <ul>
+          <li><strong>Apelido (nickname):</strong> escolhido por você, sem vínculo com identidade real;</li>
+          <li><strong>Mensagens:</strong> trafegam e são armazenadas de forma distribuída na rede P2P;</li>
+          <li><strong>ID de dispositivo anônimo:</strong> gerado localmente para identificação na rede.</li>
+        </ul>
+        <div class="info-box" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span><strong>Não coletamos</strong> nome real, e-mail, telefone, localização ou qualquer dado pessoal identificável.</span></div>
       </div>
     </div>
 
     <div class="policy-section" id="uso">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </span>
-        4. Como usamos suas informações
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+        <span data-i18n="hive.s2.title">2. Como usamos suas informações</span>
       </h2>
-      <p>Os dados coletados são utilizados exclusivamente para:</p>
-      <ul>
-        <li>Estabelecer sua identidade pseudônima na rede P2P;</li>
-        <li>Rotear mensagens corretamente entre participantes com base no alias e chave pública;</li>
-        <li>Melhorar a performance e estabilidade do app com dados de uso anônimos.</li>
-      </ul>
-      <p>
-        <strong>Não utilizamos seus dados</strong> para publicidade, criação de perfis comportamentais,
-        venda a terceiros ou qualquer finalidade além das listadas.
-      </p>
+      <div data-i18n-html="hive.s2.body">
+        <p>Os mínimos dados coletados são utilizados exclusivamente para permitir a comunicação P2P, exibir seu nickname e manter a sessão ativa durante o uso do app.</p>
+      </div>
     </div>
 
     <div class="policy-section" id="gundb">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        </span>
-        5. Tecnologia GunDB e relays P2P
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
+        <span data-i18n="hive.s3.title">3. Rede P2P e GunDB</span>
       </h2>
-      <p>
-        O Hive Chat utiliza o <a href="https://gun.eco" target="_blank" rel="noopener noreferrer">GunDB</a>,
-        um banco de dados descentralizado open-source. A comunicação acontece através de relays públicos
-        mantidos pela comunidade.
-      </p>
-      <p>
-        A Mancia Studios não é responsável pelo tratamento de dados realizado pelos relays públicos de terceiros.
-        Para entender como esses relays funcionam, consulte a documentação oficial do GunDB em
-        <a href="https://gun.eco/docs" target="_blank" rel="noopener noreferrer">gun.eco/docs</a>.
-      </p>
-      <p>
-        Os dados propagados pela rede GunDB ficam disponíveis nos relays pelo tempo configurado em cada relay.
-        A Mancia Studios não possui controle sobre esse período.
-      </p>
+      <div data-i18n-html="hive.s3.body">
+        <p>O Hive Chat utiliza a biblioteca <a href="https://gun.eco" target="_blank" rel="noopener noreferrer">GunDB</a> para comunicação descentralizada. As mensagens são propagadas pela rede de peers do GunDB.</p>
+        <ul>
+          <li>As mensagens podem ser temporariamente armazenadas em nós da rede GunDB;</li>
+          <li>A Mancia Studios não controla nem opera esses nós comunitários;</li>
+          <li>Para comunicação privada, recomenda-se o uso de chats criptografados end-to-end dentro do app.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="policy-section" id="terceiros">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-        </span>
-        6. Compartilhamento com terceiros
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <span data-i18n="hive.s4.title">4. Compartilhamento com terceiros</span>
       </h2>
-      <p>A Mancia Studios não vende, aluga ou compartilha seus dados com terceiros, exceto:</p>
-      <ul>
-        <li><strong>Relays GunDB públicos:</strong> mensagens são propagadas pela rede P2P por natureza da tecnologia;</li>
-        <li><strong>Exigência legal:</strong> quando determinado por autoridade judicial ou lei;</li>
-        <li><strong>Google Play Services:</strong> distribuição e atualização do aplicativo.</li>
-      </ul>
+      <div data-i18n-html="hive.s4.body">
+        <p>Por sua natureza P2P, as mensagens trafegam pela rede GunDB sem passar por servidores da Mancia Studios.</p>
+      </div>
     </div>
 
     <div class="policy-section" id="retencao">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-        </span>
-        7. Retenção e exclusão de dados
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></span>
+        <span data-i18n="hive.s5.title">5. Retenção e exclusão</span>
       </h2>
-      <p>
-        Dados locais (alias, chave pública, histórico de mensagens) são armazenados no dispositivo e
-        removidos ao desinstalar o app. O histórico de mensagens pode ser apagado a qualquer momento
-        nas configurações do app.
-      </p>
-      <p>
-        Em relação aos dados propagados na rede GunDB: como se trata de uma rede descentralizada,
-        a Mancia Studios não tem capacidade técnica de garantir a exclusão de dados já propagados
-        em relays públicos de terceiros.
-      </p>
+      <div data-i18n-html="hive.s5.body">
+        <p>Os dados locais são mantidos enquanto o app estiver instalado. Ao desinstalar o Hive Chat, os dados locais são removidos. Mensagens já propagadas na rede P2P podem persistir em outros nós por tempo indeterminado.</p>
+      </div>
     </div>
 
     <div class="policy-section" id="direitos">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </span>
-        8. Seus direitos (LGPD)
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        <span data-i18n="hive.s6.title">6. Seus direitos (LGPD)</span>
       </h2>
-      <p>
-        Conforme a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</strong>, você tem direito a:
-      </p>
-      <ul>
-        <li><strong>Acesso:</strong> obter informações sobre dados que possuímos sobre você;</li>
-        <li><strong>Eliminação:</strong> solicitar exclusão dos dados que podemos controlar;</li>
-        <li><strong>Portabilidade:</strong> exportar seus dados locais;</li>
-        <li><strong>Informação:</strong> ser informado sobre compartilhamentos realizados;</li>
-        <li><strong>Revogação:</strong> cancelar consentimentos previamente concedidos.</li>
-      </ul>
-      <p>
-        Devido à natureza descentralizada do app, alguns direitos podem ter limitações técnicas
-        em relação a dados já propagados pela rede P2P.
-      </p>
+      <div data-i18n-html="hive.s6.body">
+        <p>Em conformidade com a <strong>LGPD (Lei nº 13.709/2018)</strong>, você tem direito a acesso, correção, eliminação, portabilidade e oposição ao tratamento de dados. Devido à natureza descentralizada do Hive Chat, a exclusão de mensagens já propagadas na rede P2P pode não ser tecnicamente possível.</p>
+      </div>
+    </div>
+
+    <div class="policy-section" id="criancas">
+      <h2>
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span>
+        <span data-i18n="hive.s7.title">7. Privacidade de crianças</span>
+      </h2>
+      <div data-i18n-html="hive.s7.body">
+        <p>O Hive Chat é destinado a maiores de <strong>13 anos</strong>. Não coletamos intencionalmente dados de crianças menores de 13 anos.</p>
+      </div>
     </div>
 
     <div class="policy-section" id="alteracoes">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        </span>
-        9. Alterações nesta política
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+        <span data-i18n="hive.s8.title">8. Alterações nesta política</span>
       </h2>
-      <p>
-        A política pode ser atualizada para refletir evoluções do app (como criptografia E2E) ou de legislação.
-        Notificaremos sobre mudanças relevantes dentro do aplicativo e atualizando a data desta página.
-      </p>
+      <div data-i18n-html="hive.s8.body">
+        <p>Podemos atualizar esta política periodicamente. O uso continuado implica aceitação.</p>
+      </div>
     </div>
 
     <div class="policy-section" id="contato">
       <h2>
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </span>
-        10. Contato
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <span data-i18n="hive.s9.title">9. Contato</span>
       </h2>
-      <p>Para exercer seus direitos LGPD ou tirar dúvidas sobre esta política:</p>
-      <ul>
-        <li><strong>Responsável:</strong> Mancia Studios</li>
-        <li><strong>E-mail:</strong> <a href="mailto:privacidade@manciastudios.com">privacidade@manciastudios.com</a></li>
-        <li><strong>Site:</strong> <a href="https://manciastudios.com">https://manciastudios.com</a></li>
-      </ul>
-      <p>Respondemos em até <strong>15 dias úteis</strong>.</p>
+      <div data-i18n-html="hive.s9.body">
+        <p>Dúvidas ou solicitações:</p>
+        <ul>
+          <li><strong>Responsável:</strong> Mancia Studios</li>
+          <li><strong>E-mail:</strong> <a href="mailto:privacidade@manciastudios.com">privacidade@manciastudios.com</a></li>
+          <li><strong>Site:</strong> <a href="https://manciastudios.com">https://manciastudios.com</a></li>
+        </ul>
+        <p>Responderemos em até <strong>15 dias úteis</strong>.</p>
+      </div>
     </div>
 
-    <div class="contact-box" role="complementary" aria-label="Contato direto">
-      <h3>Ficou com dúvida?</h3>
-      <p>Nossa equipe está disponível para esclarecer qualquer ponto desta política.</p>
-      <a href="mailto:privacidade@manciastudios.com" id="contact-policy-hive" aria-label="Enviar email para privacidade@manciastudios.com">
+    <div class="contact-box" role="complementary">
+      <h3 data-i18n="hive.contact.title">Ficou com dúvida?</h3>
+      <p data-i18n="hive.contact.subtitle">Nossa equipe está disponível para esclarecer qualquer ponto desta política.</p>
+      <a href="mailto:privacidade@manciastudios.com" id="contact-policy-hive">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Enviar e-mail
+        <span data-i18n="hive.contact.btn">Enviar e-mail</span>
       </a>
     </div>
 
   </main>
 
   <footer class="policy-footer" role="contentinfo">
-    <p>© <span id="footer-year"></span> Mancia Studios · <a href="/">Voltar ao portfólio</a> · <a href="/policies/sentio">Sentio</a> · <a href="/policies/guardalinha">GuardaLinha</a></p>
+    <p data-i18n-html="hive.footer">© <span id="footer-year"></span> Mancia Studios · <a href="../../">Voltar ao portfólio</a> · <a href="../sentio/">Sentio</a> · <a href="../guardalinha/">GuardaLinha</a></p>
     <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
   </footer>
 
+  <script src="../../assets/js/translations.js"></script>
+  <script src="../../assets/js/i18n.js"></script>
 </body>
 </html>
