@@ -32,10 +32,19 @@
   }
 
   function updateBtn(lang) {
+    var sw = document.getElementById('lang-switch');
+    if (sw) {
+      sw.setAttribute('data-lang', lang);
+      sw.setAttribute('aria-checked', lang === 'en' ? 'true' : 'false');
+      sw.setAttribute('aria-label',
+        lang === 'pt'
+          ? 'Idioma: Português — clique para English'
+          : 'Language: English — click for Português'
+      );
+    }
     var btn = document.getElementById('lang-toggle');
     if (btn) {
       btn.textContent = lang === 'pt' ? 'EN' : 'PT';
-      btn.setAttribute('aria-label', lang === 'pt' ? 'Switch to English' : 'Mudar para Português');
     }
   }
 
@@ -44,5 +53,15 @@
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
     applyTranslations(lang);
     updateBtn(lang);
+
+    var sw = document.getElementById('lang-switch');
+    if (sw) {
+      sw.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleLang();
+        }
+      });
+    }
   });
 })();
