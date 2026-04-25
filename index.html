@@ -659,6 +659,138 @@
       .hero-stats { gap: 24px; }
       .tech-grid { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Projects Section ── */
+    #projects { background: linear-gradient(180deg, transparent, rgba(123,92,240,0.02), transparent); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      backdrop-filter: var(--blur-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card.status-dev::before   { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+    .project-card.status-stable::before{ background: linear-gradient(90deg, #10B981, #34D399); }
+    .project-card.status-prod::before  { background: linear-gradient(90deg, #00F5FF, #7B5CF0); }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .project-icon {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .project-status {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .project-status.status-dev   { background: rgba(245,158,11,0.12); color: #FBBF24; border: 1px solid rgba(245,158,11,0.25); }
+    .project-status.status-stable{ background: rgba(16,185,129,0.12); color: #34D399; border: 1px solid rgba(16,185,129,0.25); }
+    .project-status.status-prod  { background: rgba(0,245,255,0.08);  color: var(--accent-cyan); border: 1px solid rgba(0,245,255,0.2); }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      transition: all var(--transition-smooth);
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-btn-github {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-secondary);
+    }
+
+    .project-btn-github:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text-primary);
+      transform: translateY(-1px);
     }
   </style>
 </head>
@@ -676,6 +808,7 @@
         <ul class="nav-links" role="list">
           <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
           <li><a href="#apps" data-i18n="nav.apps">Apps</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
           <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contato</a></li>
         </ul>
         <div class="lang-switch" id="lang-switch" role="switch" aria-checked="false" onclick="toggleLang()" data-lang="pt" tabindex="0" aria-label="Idioma: Português — clique para English">
@@ -902,6 +1035,167 @@
               </a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-label reveal" data-i18n="projects.label">Projetos</p>
+        <h2 class="section-title reveal reveal-delay-1" id="projects-heading" data-i18n="projects.title">Do conceito ao código</h2>
+        <p class="section-subtitle reveal reveal-delay-2" data-i18n="projects.subtitle">
+          Sistemas, ferramentas e plataformas construídos com Python, segurança e propósito.
+        </p>
+
+        <div class="projects-grid">
+
+          <!-- Aegis -->
+          <article class="project-card status-stable reveal">
+            <div class="project-top">
+              <div class="project-icon">🛡️</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">Aegis Endpoint Defense</h3>
+            <p class="project-desc" data-i18n="proj.aegis.desc">
+              Plataforma EDR/SIEM Next-Gen para monitoramento e resposta a ameaças em endpoints Windows — agente invisível, forense digital e orquestração de resposta automatizada.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">SQLite</span>
+              <span class="project-tag">Android</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/aegis-endpoint-defense" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github" id="proj-aegis-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- Alastor -->
+          <article class="project-card status-stable reveal reveal-delay-1">
+            <div class="project-top">
+              <div class="project-icon">📻</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">Alastor</h3>
+            <p class="project-desc" data-i18n="proj.alastor.desc">
+              Assistente de IA desktop local com visão computacional dual-monitor. Overlay always-on-top que controla o sistema por linguagem natural — 100% offline, sem servidores externos.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">PyQt6</span>
+              <span class="project-tag">Gemini</span>
+              <span class="project-tag">Playwright</span>
+              <span class="project-tag">SQLite</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-github" style="opacity:.5;cursor:default;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <span data-i18n="proj.private">Privado</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- FurryCore -->
+          <article class="project-card status-prod reveal reveal-delay-2">
+            <div class="project-top">
+              <div class="project-icon">🐾</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">FurryCore Network</h3>
+            <p class="project-desc" data-i18n="proj.furry.desc">
+              Ecossistema web completo: landing page, rede social (PawSteps), loja, sistema de regulação comunitária e painel administrativo — tudo containerizado no Docker.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Flask</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">nginx</span>
+              <span class="project-tag">SQLite</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/FurryCore-Network" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github" id="proj-furry-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- Sentio -->
+          <article class="project-card status-dev reveal">
+            <div class="project-top">
+              <div class="project-icon">💜</div>
+              <span class="project-status status-dev" data-i18n="status.dev">Em desenvolvimento</span>
+            </div>
+            <h3 class="project-name">Sentio</h3>
+            <p class="project-desc" data-i18n="proj.sentio.desc">
+              App Android de rastreamento de humor e bem-estar emocional. Registros locais, insights e notificações de lembrete — sem coleta de dados pessoais.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Expo</span>
+              <span class="project-tag">Android</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/Sentio" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github" id="proj-sentio-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- GuardaLinha -->
+          <article class="project-card status-dev reveal reveal-delay-1">
+            <div class="project-top">
+              <div class="project-icon">🔒</div>
+              <span class="project-status status-dev" data-i18n="status.dev">Em desenvolvimento</span>
+            </div>
+            <h3 class="project-name">GuardaLinha</h3>
+            <p class="project-desc" data-i18n="proj.guardalinha.desc">
+              App Android de bloqueio de chamadas indesejadas. Lista de bloqueio local, histórico e serviço em segundo plano — sem transmissão de dados para servidores externos.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Expo</span>
+              <span class="project-tag">Android</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/GuardaLinha" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github" id="proj-guardalinha-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- Hive Chat -->
+          <article class="project-card status-dev reveal reveal-delay-2">
+            <div class="project-top">
+              <div class="project-icon">🐝</div>
+              <span class="project-status status-dev" data-i18n="status.dev">Em desenvolvimento</span>
+            </div>
+            <h3 class="project-name">Hive Chat</h3>
+            <p class="project-desc" data-i18n="proj.hive.desc">
+              Mensageiro P2P descentralizado: cada usuário é o servidor. Sem login, sem rastreamento, sem infraestrutura central — comunicação via GunDB.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Expo</span>
+              <span class="project-tag">GunDB</span>
+              <span class="project-tag">Android</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/Hive" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github" id="proj-hive-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>

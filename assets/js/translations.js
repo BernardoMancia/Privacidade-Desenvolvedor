@@ -1,9 +1,48 @@
 window.i18n = {
   /* ── NAV ─────────────────────────────────────────── */
-  'nav.about':   { pt: 'Sobre',   en: 'About' },
-  'nav.apps':    { pt: 'Apps',    en: 'Apps' },
-  'nav.contact': { pt: 'Contato', en: 'Contact' },
-  'nav.back':    { pt: '← Voltar ao portfólio', en: '← Back to portfolio' },
+  'nav.about':    { pt: 'Sobre',    en: 'About' },
+  'nav.apps':     { pt: 'Apps',     en: 'Apps' },
+  'nav.projects': { pt: 'Projetos', en: 'Projects' },
+  'nav.contact':  { pt: 'Contato',  en: 'Contact' },
+  'nav.back':     { pt: '← Voltar ao portfólio', en: '← Back to portfolio' },
+
+  /* ── STATUS BADGES ───────────────────────────────── */
+  'status.dev':    { pt: 'Em desenvolvimento', en: 'In development' },
+  'status.stable': { pt: 'Versão estável',     en: 'Stable version' },
+  'status.prod':   { pt: 'Em produção',        en: 'In production' },
+  'proj.private':  { pt: 'Privado',            en: 'Private' },
+
+  /* ── PROJECTS SECTION ────────────────────────────── */
+  'projects.label': { pt: 'Projetos', en: 'Projects' },
+  'projects.title': { pt: 'Do conceito ao código', en: 'From concept to code' },
+  'projects.subtitle': {
+    pt: 'Sistemas, ferramentas e plataformas construídos com Python, segurança e propósito.',
+    en: 'Systems, tools, and platforms built with Python, security, and purpose.'
+  },
+  'proj.aegis.desc': {
+    pt: 'Plataforma EDR/SIEM Next-Gen para monitoramento e resposta a ameaças em endpoints Windows — agente invisível, forense digital e orquestração de resposta automatizada.',
+    en: 'Next-Gen EDR/SIEM platform for threat monitoring and response on Windows endpoints — invisible agent, digital forensics, and automated response orchestration.'
+  },
+  'proj.alastor.desc': {
+    pt: 'Assistente de IA desktop local com visão computacional dual-monitor. Overlay always-on-top que controla o sistema por linguagem natural — 100% offline, sem servidores externos.',
+    en: 'Local AI desktop assistant with dual-monitor computer vision. Always-on-top overlay that controls the system through natural language — 100% offline, no external servers.'
+  },
+  'proj.furry.desc': {
+    pt: 'Ecossistema web completo: landing page, rede social (PawSteps), loja, sistema de regulação comunitária e painel administrativo — tudo containerizado no Docker.',
+    en: 'Complete web ecosystem: landing page, social network (PawSteps), shop, community regulation system, and admin dashboard — all containerized in Docker.'
+  },
+  'proj.sentio.desc': {
+    pt: 'App Android de rastreamento de humor e bem-estar emocional. Registros locais, insights e notificações de lembrete — sem coleta de dados pessoais.',
+    en: 'Android app for mood and emotional wellness tracking. Local records, insights, and reminder notifications — no personal data collection.'
+  },
+  'proj.guardalinha.desc': {
+    pt: 'App Android de bloqueio de chamadas indesejadas. Lista de bloqueio local, histórico e serviço em segundo plano — sem transmissão de dados para servidores externos.',
+    en: 'Android app for blocking unwanted calls. Local block list, history, and background service — no data transmission to external servers.'
+  },
+  'proj.hive.desc': {
+    pt: 'Mensageiro P2P descentralizado: cada usuário é o servidor. Sem login, sem rastreamento, sem infraestrutura central — comunicação via GunDB.',
+    en: 'Decentralized P2P messenger: every user is the server. No login, no tracking, no central infrastructure — communication via GunDB.'
+  },
 
   /* ── HERO ────────────────────────────────────────── */
   'hero.eyebrow':  { pt: 'Disponível para projetos', en: 'Available for projects' },
