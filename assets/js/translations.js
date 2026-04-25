@@ -10,6 +10,7 @@ window.i18n = {
   'status.dev':    { pt: 'Em desenvolvimento', en: 'In development' },
   'status.stable': { pt: 'Versão estável',     en: 'Stable version' },
   'status.prod':   { pt: 'Em produção',        en: 'In production' },
+  'status.alpha':  { pt: 'Alpha Estável',      en: 'Stable Alpha' },
   'proj.private':  { pt: 'Privado',            en: 'Private' },
 
   /* ── PROJECTS SECTION ────────────────────────────── */

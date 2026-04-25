@@ -702,6 +702,7 @@
     .project-card.status-dev::before   { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
     .project-card.status-stable::before{ background: linear-gradient(90deg, #10B981, #34D399); }
     .project-card.status-prod::before  { background: linear-gradient(90deg, #00F5FF, #7B5CF0); }
+    .project-card.status-alpha::before { background: linear-gradient(90deg, #6366F1, #818CF8); }
 
     .project-top {
       display: flex;
@@ -728,6 +729,7 @@
     .project-status.status-dev   { background: rgba(245,158,11,0.12); color: #FBBF24; border: 1px solid rgba(245,158,11,0.25); }
     .project-status.status-stable{ background: rgba(16,185,129,0.12); color: #34D399; border: 1px solid rgba(16,185,129,0.25); }
     .project-status.status-prod  { background: rgba(0,245,255,0.08);  color: var(--accent-cyan); border: 1px solid rgba(0,245,255,0.2); }
+    .project-status.status-alpha { background: rgba(99,102,241,0.12); color: #818CF8; border: 1px solid rgba(99,102,241,0.28); }
 
     .project-name {
       font-family: var(--font-display);
@@ -1102,10 +1104,10 @@
           </article>
 
           <!-- FurryCore -->
-          <article class="project-card status-prod reveal reveal-delay-2">
+          <article class="project-card status-alpha reveal reveal-delay-2">
             <div class="project-top">
               <div class="project-icon">🐾</div>
-              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+              <span class="project-status status-alpha" data-i18n="status.alpha">Alpha Estável</span>
             </div>
             <h3 class="project-name">FurryCore Network</h3>
             <p class="project-desc" data-i18n="proj.furry.desc">
