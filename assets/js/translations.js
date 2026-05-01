@@ -41,8 +41,8 @@ window.i18n = {
     en: 'Android app for blocking unwanted calls. Local block list, history, and background service — no data transmission to external servers.'
   },
   'proj.hive.desc': {
-    pt: 'Mensageiro P2P descentralizado: cada usuário é o servidor. Sem login, sem rastreamento, sem infraestrutura central — comunicação via GunDB.',
-    en: 'Decentralized P2P messenger: every user is the server. No login, no tracking, no central infrastructure — communication via GunDB.'
+    pt: 'Mensageiro P2P descentralizado v3.2.0: canais temáticos, criptografia por sala, painel admin e sem servidor central — cada usuário é o relay.',
+    en: 'Decentralized P2P messenger v3.2.0: themed channels, per-room encryption, admin panel, no central server — every user is a relay.'
   },
 
   /* ── HERO ────────────────────────────────────────── */
