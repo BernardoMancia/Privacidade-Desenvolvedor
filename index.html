@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-i18n-page="home">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mancia Studios — Engenharia de Software, Cibersegurança &amp; Apps Android</title>
+  <meta name="description" content="Mancia Studios — Estúdio independente de engenharia backend, cibersegurança e aplicativos Android nativos: Aplicativos Publicados, Em Desenvolvimento e Projetos Desenvolvidos." />
+  <meta name="keywords" content="Mancia Studios, desenvolvimento android, kotlin, jetpack compose, python, fastapi, cibersegurança, NyxMesh, Lupy Studio, Boop, FurryCore Network, Córtex IA, OfferFlow, Aegis" />
+  <meta name="author" content="Mancia Studios" />
+  <meta name="theme-color" content="#080B12" />
+
+  <meta property="og:title" content="Mancia Studios — Engenharia de Software, Cibersegurança &amp; Apps Android" />
+  <meta property="og:description" content="Sistemas backend resilientes, criptografia aplicada e aplicativos Android nativos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://manciastudios.com/" />
+  <meta property="og:site_name" content="Mancia Studios" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mancia Studios — Engenharia de Software &amp; Apps Android" />
+  <meta name="twitter:description" content="Sistemas backend resilientes, criptografia aplicada e aplicativos Android nativos." />
+
+  <link rel="canonical" href="https://manciastudios.com/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+  <link rel="stylesheet" href="assets/css/global.css?v=3.2.0" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mancia Studios",
+    "url": "https://manciastudios.com",
+    "email": "contato@manciastudios.com",
+    "sameAs": [
+      "https://github.com/BernardoMancia"
+    ]
+  }
+  </script>
+
+  <style>
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 300ms ease;
+    }
+
+    .nav.scrolled,
+    .nav.menu-open {
+      background: rgba(8, 11, 18, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav-brand .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.25);
+      color: var(--accent-cyan) !important;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(0, 245, 255, 0.18) !important;
+      color: var(--accent-cyan) !important;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-toggle:hover {
+      border-color: rgba(0, 245, 255, 0.35);
+      color: var(--accent-cyan);
+    }
+
+    .nav-toggle .icon-close { display: none; }
+    .nav.menu-open .nav-toggle .icon-menu { display: none; }
+    .nav.menu-open .nav-toggle .icon-close { display: block; }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      margin-top: 14px;
+      padding-top: 14px;
+    }
+
+    .nav.menu-open .mobile-menu {
+      display: block;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(0, 245, 255, 0.08);
+      color: var(--accent-cyan);
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .hero-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(0, 245, 255, 0.06);
+      top: -100px;
+      right: -100px;
+    }
+
+    .hero-orb-2 {
+      width: 600px;
+      height: 600px;
+      background: rgba(123, 92, 240, 0.05);
+      bottom: -200px;
+      left: -150px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: rgba(0, 245, 255, 0.06);
+      border: 1px solid rgba(0, 245, 255, 0.18);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-cyan);
+      margin-bottom: 28px;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+
+    .hero-eyebrow .blink {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      animation: blink 1.2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6.8vw, 76px);
+      font-weight: 700;
+      line-height: 1.06;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s 0.15s ease both;
+    }
+
+    .hero-title .gradient {
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.8s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.45s ease both;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(110px, auto));
+      gap: 32px;
+      margin-top: 64px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+      animation: fadeInUp 0.8s 0.6s ease both;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .stat-number .accent {
+      color: var(--accent-cyan);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: fadeInUp 1s 1s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--accent-cyan), transparent);
+      animation: scroll-bounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.6); opacity: 0.4; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    #about {
+      background: linear-gradient(180deg, transparent, rgba(123, 92, 240, 0.03), transparent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-card {
+      background: var(--bg-surface);
+      backdrop-filter: var(--blur-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    }
+
+    .about-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: #080B12;
+      margin-bottom: 20px;
+    }
+
+    .about-card-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .about-card-role {
+      font-size: 14px;
+      color: var(--accent-cyan);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .about-card-bio {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .about-float-badge {
+      position: absolute;
+      bottom: -16px;
+      right: 24px;
+      background: rgba(8,11,18,0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-float-badge .icon { font-size: 24px; }
+    .about-float-badge .text-sm { font-size: 11px; color: var(--text-muted); }
+    .about-float-badge .text-main { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .tech-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all var(--transition-smooth);
+    }
+
+    .tech-item:hover {
+      border-color: rgba(0, 245, 255, 0.2);
+      background: var(--bg-surface-hover);
+      transform: translateY(-2px);
+    }
+
+    .tech-icon { font-size: 20px; }
+    .tech-name { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+
+    /* ── Apps Sections (#apps-published & #apps-dev) ── */
+    #apps-dev {
+      background: linear-gradient(180deg, transparent, rgba(0, 245, 255, 0.02), transparent);
+    }
+
+    .apps-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 24px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 24px;
+    }
+
+    .app-card {
+      background: var(--bg-surface);
+      backdrop-filter: var(--blur-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      transition: all var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-xl);
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+      box-shadow: inset 0 0 0 1px rgba(0, 245, 255, 0.25);
+      pointer-events: none;
+    }
+
+    .app-card:hover::after { opacity: 1; }
+
+    .app-card:hover {
+      background: var(--bg-surface-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 32px rgba(0, 245, 255, 0.06);
+    }
+
+    .app-card.is-awaiting { border-color: rgba(251, 191, 36, 0.22); }
+    .app-card.is-awaiting::after { box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.35); }
+
+    .app-card.is-obsolete {
+      border-color: rgba(244, 63, 94, 0.22);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .app-card.is-obsolete::after { box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.35); }
+    .app-card.is-obsolete .app-icon { filter: saturate(0.55); opacity: 0.85; }
+
+    .app-card.is-discontinued {
+      border-color: rgba(239, 68, 68, 0.28);
+      background: rgba(15, 23, 42, 0.48);
+    }
+
+    .app-card.is-discontinued::after { box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.42); }
+    .app-card.is-discontinued .app-icon { filter: grayscale(0.68); opacity: 0.78; }
+
+    .app-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .app-icon-nyxmesh {
+      background: linear-gradient(135deg, #00F5FF, #7B5CF0);
+      box-shadow: 0 6px 20px rgba(0, 245, 255, 0.22);
+    }
+
+    .app-icon-lupystudio {
+      background: linear-gradient(135deg, #F59E0B, #EC4899);
+      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.2);
+    }
+
+    .app-icon-boop {
+      background: linear-gradient(135deg, #00F2FF, #FF2E97 55%, #9B5CFF);
+      box-shadow: 0 6px 20px rgba(255, 46, 151, 0.24);
+    }
+
+    .app-icon-guardalinha {
+      background: linear-gradient(135deg, #0EA5E9, #2563EB);
+    }
+
+    .app-icon-sentio {
+      background: linear-gradient(135deg, #FF6B9D, #C44FFF);
+    }
+
+    .app-icon-hive {
+      background: linear-gradient(135deg, #F59E0B, #B45309);
+    }
+
+    .app-card-info { flex: 1; min-width: 0; }
+
+    .app-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .app-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .app-version-pill {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.25);
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+    }
+
+    .app-category { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+    .app-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      margin-bottom: 14px;
+      padding: 4px 11px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .app-status-awaiting {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.34);
+      color: #FCD34D;
+    }
+
+    .app-status-obsolete {
+      background: rgba(244, 63, 94, 0.12);
+      border: 1px solid rgba(244, 63, 94, 0.34);
+      color: #FDA4AF;
+    }
+
+    .app-status-discontinued {
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.44);
+      color: #FCA5A5;
+    }
+
+    .app-description {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .app-card-footer {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .app-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 15px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all var(--transition-smooth);
+      position: relative;
+      z-index: 2;
+    }
+
+    .app-btn-play {
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      color: var(--accent-cyan);
+    }
+
+    .app-btn-play:hover {
+      background: rgba(0, 245, 255, 0.18);
+      color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .app-btn-awaiting {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.28);
+      color: #FCD34D;
+      cursor: default;
+    }
+
+    .app-btn-disabled {
+      background: rgba(244, 63, 94, 0.08);
+      border: 1px solid rgba(244, 63, 94, 0.24);
+      color: #FDA4AF;
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    .app-btn-discontinued {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.34);
+      color: #FCA5A5;
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+
+    .app-btn-github {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+    }
+
+    .app-btn-github:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.22);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .app-btn-policy {
+      background: rgba(123, 92, 240, 0.08);
+      border: 1px solid rgba(123, 92, 240, 0.28);
+      color: #a78bfa;
+    }
+
+    .app-btn-policy svg { color: #a78bfa; opacity: 0.85; }
+
+    .app-btn-policy:hover {
+      background: rgba(123, 92, 240, 0.18);
+      border-color: rgba(123, 92, 240, 0.55);
+      color: #c4b5fd;
+      box-shadow: 0 4px 18px rgba(123, 92, 240, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .app-btn-policy:hover svg { opacity: 1; }
+
+    /* ── Projects Section (#projects) ── */
+    #projects { background: linear-gradient(180deg, transparent, rgba(123,92,240,0.025), transparent); }
+
+    .projects-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .filter-pill {
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+    }
+
+    .filter-pill:hover {
+      border-color: rgba(0, 245, 255, 0.3);
+      color: var(--text-primary);
+    }
+
+    .filter-pill.active {
+      background: rgba(0, 245, 255, 0.12);
+      border-color: rgba(0, 245, 255, 0.4);
+      color: var(--accent-cyan);
+      box-shadow: 0 0 18px rgba(0, 245, 255, 0.12);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      backdrop-filter: var(--blur-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card.status-dev::before      { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+    .project-card.status-wip::before      { background: linear-gradient(90deg, #FB923C, #FBBF24); }
+    .project-card.status-tuning::before   { background: linear-gradient(90deg, #38BDF8, #818CF8); }
+    .project-card.status-review::before   { background: linear-gradient(90deg, #A855F7, #EC4899); }
+    .project-card.status-stable::before   { background: linear-gradient(90deg, #10B981, #34D399); }
+    .project-card.status-prod::before     { background: linear-gradient(90deg, #00F5FF, #7B5CF0); }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .project-icon { font-size: 26px; line-height: 1; display: inline-flex; align-items: center; }
+
+    .project-icon-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 230, 0, 0.35);
+      box-shadow: 0 4px 16px rgba(255, 230, 0, 0.16);
+      background: #0B1020;
+    }
+
+    .project-status {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .project-status.status-dev    { background: rgba(245,158,11,0.12); color: #FBBF24; border: 1px solid rgba(245,158,11,0.28); }
+    .project-status.status-wip    { background: rgba(251,146,60,0.12); color: #FDBA74; border: 1px solid rgba(251,146,60,0.28); }
+    .project-status.status-tuning { background: rgba(56,189,248,0.12); color: #7DD3FC; border: 1px solid rgba(56,189,248,0.28); }
+    .project-status.status-review { background: rgba(168,85,247,0.12); color: #D8B4FE; border: 1px solid rgba(168,85,247,0.3); }
+    .project-status.status-stable { background: rgba(16,185,129,0.12); color: #34D399; border: 1px solid rgba(16,185,129,0.25); }
+    .project-status.status-prod   { background: rgba(0,245,255,0.08);  color: var(--accent-cyan); border: 1px solid rgba(0,245,255,0.22); }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 15px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      transition: all var(--transition-smooth);
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-btn-github {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text-secondary);
+    }
+
+    .project-btn-github:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.22);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .project-btn-primary {
+      background: rgba(255, 230, 0, 0.14);
+      border: 1px solid rgba(255, 230, 0, 0.36);
+      color: #FFE600;
+    }
+
+    .project-btn-primary:hover {
+      background: rgba(255, 230, 0, 0.24);
+      border-color: rgba(255, 230, 0, 0.6);
+      color: #FFF8B8;
+      transform: translateY(-1px);
+    }
+
+    .project-btn-nogit {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      cursor: default;
+    }
+
+    #contact {
+      background: linear-gradient(180deg, transparent, rgba(0, 245, 255, 0.02), transparent);
+    }
+
+    .contact-wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .social-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--transition-smooth);
+    }
+
+    .social-link svg { width: 18px; height: 18px; }
+
+    .social-link:hover {
+      background: var(--bg-surface-hover);
+      border-color: rgba(0, 245, 255, 0.25);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left { font-size: 13px; color: var(--text-muted); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover { color: var(--accent-cyan); }
+
+    @media (max-width: 1024px) and (min-width: 601px) {
+      .apps-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .app-card,
+      .project-card {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .apps-header { flex-direction: column; align-items: flex-start; }
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; min-width: 44px; min-height: 44px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav { padding: calc(14px + env(safe-area-inset-top, 0px)) 0 14px; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr; gap: 18px; }
+      .projects-grid { grid-template-columns: 1fr; gap: 18px; }
+      .app-card, .project-card { padding: 20px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { width: 100%; justify-content: center; min-height: 46px; }
+      .filter-pill, .project-btn, .app-btn, .social-link { min-height: 42px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (hover: none) {
+      .app-card:hover,
+      .project-card:hover,
+      .btn-primary:hover,
+      .btn-outline:hover,
+      .project-btn-github:hover,
+      .project-btn-primary:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <nav class="nav" id="main-nav" aria-label="Navegação principal">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-brand" aria-label="Mancia Studios — Início">
+          <div class="dot" aria-hidden="true"></div>
+          Mancia Studios
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+          <li><a href="#apps-published" data-i18n="nav.apps.pub">Apps Publicados</a></li>
+          <li><a href="#apps-dev" data-i18n="nav.apps.dev">Apps em Dev</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
+          <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contato</a></li>
+        </ul>
+        <div class="nav-controls">
+          <div class="lang-switch" id="lang-switch" role="switch" aria-checked="false" onclick="toggleLang()" data-lang="pt" tabindex="0" aria-label="Idioma: Português — clique para English">
+            <span class="lang-opt">PT</span>
+            <span class="lang-opt">EN</span>
+            <div class="lang-pill"></div>
+          </div>
+          <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Abrir ou fechar menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <ul role="list">
+          <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+          <li><a href="#apps-published" data-i18n="nav.apps.pub">Apps Publicados</a></li>
+          <li><a href="#apps-dev" data-i18n="nav.apps.dev">Apps em Dev</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow" aria-label="Status">
+            <div class="blink" aria-hidden="true"></div>
+            <span data-i18n="hero.eyebrow">Disponível para projetos</span>
+          </div>
+          <h1 class="hero-title" id="hero-heading">
+            <span data-i18n="hero.title1">Construindo sistemas &amp; apps</span><br />
+            <span class="gradient" data-i18n="hero.title2">seguros e memoráveis</span>
+          </h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Estúdio independente focado em engenharia backend de alta confiabilidade,
+            criptografia aplicada e aplicativos Android nativos — do conceito ao código em produção.
+          </p>
+          <div class="hero-actions">
+            <a href="#apps-dev" class="btn btn-primary" id="hero-cta-apps">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+              <span data-i18n="hero.cta1">Explorar aplicativos</span>
+            </a>
+            <a href="#contact" class="btn btn-outline" id="hero-cta-contact" data-i18n="hero.cta2">Falar comigo</a>
+          </div>
+          <div class="hero-stats" role="list" aria-label="Estatísticas">
+            <div class="stat-item" role="listitem">
+              <div class="stat-number"><span id="stat-published-count">0</span></div>
+              <div class="stat-label" data-i18n="hero.stat.pub">Apps publicados</div>
+            </div>
+            <div class="stat-item" role="listitem">
+              <div class="stat-number"><span id="stat-dev-apps-count">5</span></div>
+              <div class="stat-label" data-i18n="hero.stat.dev">Apps em dev / revisão</div>
+            </div>
+            <div class="stat-item" role="listitem">
+              <div class="stat-number"><span id="stat-projects-count">17</span></div>
+              <div class="stat-label" data-i18n="hero.stat.proj">Projetos públicos</div>
+            </div>
+            <div class="stat-item" role="listitem">
+              <div class="stat-number">2024</div>
+              <div class="stat-label" data-i18n="hero.stat.since">Ativo desde</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-line"></div>
+        scroll
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <div class="about-card">
+              <div class="about-avatar" aria-hidden="true">M</div>
+              <div class="about-card-name">Mancia Studios</div>
+              <div class="about-card-role" data-i18n="about.card.role">Fullstack &amp; Security Engineer · Indie Maker</div>
+              <p class="about-card-bio" data-i18n="about.card.bio">
+                Engenheiro de software focado em sistemas seguros, arquiteturas Zero-Storage e performance nativa.
+                Crio desde servidores e agentes de defesa até aplicativos Android completos — do protocolo de rede à interface.
+              </p>
+            </div>
+            <div class="about-float-badge" aria-hidden="true">
+              <div class="icon">🔐</div>
+              <div>
+                <div class="text-sm" data-i18n="about.badge">Stack principal</div>
+                <div class="text-main">Python · Kotlin · C++</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-text">
+            <p class="section-label reveal" data-i18n="about.label">Sobre mim</p>
+            <h2 class="section-title reveal reveal-delay-1" id="about-heading" data-i18n-html="about.title">
+              Código limpo,<br />segurança por design
+            </h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-i18n="about.subtitle">
+              Especializado em backend com Python, FastAPI e Node.js — projetando APIs resilientes, automações críticas e protocolos criptografados.
+              No mobile, desenvolvo aplicativos Android nativos em Kotlin, Jetpack Compose e C++ JNI.
+            </p>
+
+            <div class="tech-grid reveal reveal-delay-3" role="list" aria-label="Tecnologias utilizadas">
+              <div class="tech-item" role="listitem">
+                <span class="tech-icon">🐍</span>
+                <span class="tech-name" data-i18n="tech.python">Python / FastAPI</span>
+              </div>
+              <div class="tech-item" role="listitem">
+                <span class="tech-icon">📱</span>
+                <span class="tech-name" data-i18n="tech.kotlin">Kotlin / Jetpack Compose</span>
+              </div>
+              <div class="tech-item" role="listitem">
+                <span class="tech-icon">🔐</span>
+                <span class="tech-name" data-i18n="tech.cpp">C++ JNI / WebRTC / TLS 1.3</span>
+              </div>
+              <div class="tech-item" role="listitem">
+                <span class="tech-icon">🗄️</span>
+                <span class="tech-name" data-i18n="tech.db">PostgreSQL / SQLite / Node.js</span>
+              </div>
+              <div class="tech-item" role="listitem">
+                <span class="tech-icon">🐧</span>
+                <span class="tech-name" data-i18n="tech.linux">Linux / Nginx / Hardening VPS</span>
+              </div>
+              <div class="tech-item" role="listitem">
+                <span class="tech-icon">🐳</span>
+                <span class="tech-name" data-i18n="tech.docker">Docker / Automação &amp; CI/CD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ══════════════════════════════════════════════════
+         SEÇÃO 1 — APLICATIVOS PUBLICADOS (#apps-published)
+         ══════════════════════════════════════════════════ -->
+    <section id="apps-published" class="section" aria-labelledby="apps-pub-heading">
+      <div class="container">
+        <div class="apps-header">
+          <div>
+            <p class="section-label reveal" data-i18n="apps.pub.label">Google Play &amp; Lojas Oficiais</p>
+            <h2 class="section-title reveal reveal-delay-1" id="apps-pub-heading" data-i18n="apps.pub.title">Aplicativos publicados</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-i18n="apps.pub.subtitle">
+              Aplicativos móveis oficialmente disponíveis para download público nas lojas oficiais, com link direto e política de privacidade dedicada.
+            </p>
+          </div>
+        </div>
+
+        <div class="apps-grid" id="published-apps-grid" style="display:none;"></div>
+
+        <div class="empty-showcase glass reveal" id="published-apps-empty" role="status">
+          <div class="empty-showcase-icon" aria-hidden="true">🚀</div>
+          <span class="badge badge-awaiting" data-i18n="apps.pub.empty.badge">Em homologação para lançamento</span>
+          <h3 class="empty-showcase-title" data-i18n="apps.pub.empty.title">Nenhum aplicativo publicado oficialmente no momento</h3>
+          <p class="empty-showcase-desc" data-i18n="apps.pub.empty.desc">
+            Nossos aplicativos móveis estão atualmente em etapa final de homologação para publicação na loja ou passando por modernização técnica. Acompanhe o status detalhado logo abaixo em Aplicativos em Desenvolvimento.
+          </p>
+          <a href="#apps-dev" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <span data-i18n="apps.pub.empty.cta">Ver aplicativos em desenvolvimento</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ══════════════════════════════════════════════════
+         SEÇÃO 2 — APLICATIVOS EM DESENVOLVIMENTO (#apps-dev)
+         ══════════════════════════════════════════════════ -->
+    <section id="apps-dev" class="section" aria-labelledby="apps-dev-heading">
+      <div class="container">
+        <div class="apps-header">
+          <div>
+            <p class="section-label reveal" data-i18n="apps.dev.label">Pipeline Mobile &amp; Revisão</p>
+            <h2 class="section-title reveal reveal-delay-1" id="apps-dev-heading" data-i18n="apps.dev.title">Aplicativos em desenvolvimento</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-i18n="apps.dev.subtitle">
+              Aplicativos móveis em construção, em fase final de homologação para a Google Play, projetos legados aguardando atualização ou protótipos encerrados oficialmente.
+            </p>
+          </div>
+        </div>
+
+        <div class="apps-grid" id="dev-apps-grid">
+          <!-- NyxMesh -->
+          <article class="app-card is-awaiting reveal" aria-labelledby="app-nyxmesh-name">
+            <div class="app-card-header">
+              <div class="app-icon app-icon-nyxmesh" aria-hidden="true">🕸️</div>
+              <div class="app-card-info">
+                <div class="app-title-row">
+                  <h3 class="app-name" id="app-nyxmesh-name">NyxMesh</h3>
+                  <span class="app-version-pill">v2.3.0</span>
+                </div>
+                <div class="app-category" data-i18n="nyxmesh.category">Comunicação · Malha P2P Zero-Storage</div>
+              </div>
+            </div>
+            <div class="app-status-pill app-status-awaiting">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="status.awaiting">Aguardando publicação oficial</span>
+            </div>
+            <p class="app-description" data-i18n="nyxmesh.desc">
+              Mensageiro P2P criptografado ponta a ponta (XSalsa20-Poly1305) em Kotlin &amp; C++ JNI.
+              Malha WebRTC, TLS 1.3 com SPKI Pinning, player de vídeo Zero-Disk 100% em RAM e cofre local criptografado (.nyxv). Em etapa final antes da publicação oficial na loja.
+            </p>
+            <div class="app-card-footer">
+              <span class="app-btn app-btn-awaiting" id="nyxmesh-store-pending" aria-disabled="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="nyxmesh.btn.awaiting">Em homologação na loja</span>
+              </span>
+              <a href="policies/nyxmesh/" class="app-btn app-btn-policy" id="nyxmesh-policy-link" aria-label="Política de privacidade do NyxMesh">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="app.policy.btn">Política</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Lupy Studio -->
+          <article class="app-card is-awaiting reveal reveal-delay-1" aria-labelledby="app-lupystudio-name">
+            <div class="app-card-header">
+              <div class="app-icon app-icon-lupystudio" aria-hidden="true">🎹</div>
+              <div class="app-card-info">
+                <div class="app-title-row">
+                  <h3 class="app-name" id="app-lupystudio-name">Lupy Studio</h3>
+                  <span class="app-version-pill">v2.1.0</span>
+                </div>
+                <div class="app-category" data-i18n="lupystudio.category">Música &amp; Áudio · DAW 100% Offline</div>
+              </div>
+            </div>
+            <div class="app-status-pill app-status-awaiting">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="status.awaiting">Aguardando publicação oficial</span>
+            </div>
+            <p class="app-description" data-i18n="lupystudio.desc">
+              Estação digital de produção musical (DAW), sintetizador, sampler, bateria MPC-16, timeline multitrack e vocoder 100% offline. Inclui sincronização Wi-Fi local (LupySync &amp; LupyLink) e zero coleta de dados. Em preparação para publicação oficial.
+            </p>
+            <div class="app-card-footer">
+              <span class="app-btn app-btn-awaiting" id="lupystudio-store-pending" aria-disabled="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="nyxmesh.btn.awaiting">Em homologação na loja</span>
+              </span>
+              <a href="policies/lupystudio/" class="app-btn app-btn-policy" id="lupystudio-policy-link" aria-label="Política de privacidade do Lupy Studio">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="app.policy.btn">Política</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Boop Mobile (Android — FurryCore Network) -->
+          <article class="app-card is-awaiting reveal reveal-delay-2" aria-labelledby="app-boop-name">
+            <div class="app-card-header">
+              <div class="app-icon app-icon-boop" aria-hidden="true">🐾</div>
+              <div class="app-card-info">
+                <div class="app-title-row">
+                  <h3 class="app-name" id="app-boop-name">Boop</h3>
+                  <span class="app-version-pill">v1.0.0</span>
+                </div>
+                <div class="app-category" data-i18n="boop.category">Rede Social · App Android Híbrido Nativo</div>
+              </div>
+            </div>
+            <div class="app-status-pill app-status-awaiting">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="status.dev">Em desenvolvimento</span>
+            </div>
+            <p class="app-description" data-i18n="boop.desc">
+              Aplicativo Android nativo da rede social Boop (ecossistema FurryCore Network) em Kotlin, CameraX, ML Kit e ONNX Runtime: feed híbrido 4-em-1, Clips, Radar ±100m com Shake-to-Boop, Chat Direct, Comissões Kanban e reconhecimento facial +18 100% on-device com Retenção Zero e Handoff PC ↔ Celular (ECA Digital / LGPD).
+            </p>
+            <div class="app-card-footer">
+              <span class="app-btn app-btn-awaiting" id="boop-store-pending" aria-disabled="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="boop.btn.dev">Em testes internos (APK)</span>
+              </span>
+              <a href="policies/boop/" class="app-btn app-btn-policy" id="boop-policy-link" aria-label="Política de privacidade do Boop">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="app.policy.btn">Política</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- GuardaLinha (OBSOLETE) -->
+          <article class="app-card is-obsolete reveal reveal-delay-2" aria-labelledby="app-guardalinha-name">
+            <div class="app-card-header">
+              <div class="app-icon app-icon-guardalinha" aria-hidden="true">🛡️</div>
+              <div class="app-card-info">
+                <div class="app-title-row">
+                  <h3 class="app-name" id="app-guardalinha-name">GuardaLinha</h3>
+                </div>
+                <div class="app-category" data-i18n="guardalinha.category">Ferramentas · Segurança Telefônica</div>
+              </div>
+            </div>
+            <div class="app-status-pill app-status-obsolete">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-i18n="status.obsolete">OBSOLETE · Aguardando melhoria e atualização</span>
+            </div>
+            <p class="app-description" data-i18n="guardalinha.desc">
+              Bloqueador local de chamadas indesejadas e telemarketing para Android. Projeto marcado como OBSOLETO no momento — aguardando melhoria técnica, refatoração e nova atualização antes de retornar à vitrine publicada.
+            </p>
+            <div class="app-card-footer">
+              <span class="app-btn app-btn-disabled" id="guardalinha-play-disabled" aria-disabled="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="app.btn.overhaul">Aguardando melhoria</span>
+              </span>
+              <a href="https://github.com/BernardoMancia/GuardaLinha" target="_blank" rel="noopener noreferrer" class="app-btn app-btn-github" id="guardalinha-github-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+              <a href="policies/guardalinha/" class="app-btn app-btn-policy" id="guardalinha-policy-link" aria-label="Política de privacidade do GuardaLinha">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="app.policy.btn">Política</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sentio (OBSOLETE) -->
+          <article class="app-card is-obsolete reveal" aria-labelledby="app-sentio-name">
+            <div class="app-card-header">
+              <div class="app-icon app-icon-sentio" aria-hidden="true">💜</div>
+              <div class="app-card-info">
+                <div class="app-title-row">
+                  <h3 class="app-name" id="app-sentio-name">Sentio</h3>
+                </div>
+                <div class="app-category" data-i18n="sentio.category">Bem-estar · Saúde Mental</div>
+              </div>
+            </div>
+            <div class="app-status-pill app-status-obsolete">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-i18n="status.obsolete">OBSOLETE · Aguardando melhoria e atualização</span>
+            </div>
+            <p class="app-description" data-i18n="sentio.desc">
+              Aplicativo de bem-estar emocional e registro local de humor. Projeto marcado como OBSOLETO no momento — aguardando refatoração completa, melhorias de arquitetura e nova atualização.
+            </p>
+            <div class="app-card-footer">
+              <span class="app-btn app-btn-disabled" id="sentio-play-disabled" aria-disabled="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="app.btn.overhaul">Aguardando melhoria</span>
+              </span>
+              <a href="https://github.com/BernardoMancia/Sentio" target="_blank" rel="noopener noreferrer" class="app-btn app-btn-github" id="sentio-github-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+              <a href="policies/sentio/" class="app-btn app-btn-policy" id="sentio-policy-link" aria-label="Política de privacidade do Sentio">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="app.policy.btn">Política</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Hive (DESCONTINUADO — Sem versão estável) -->
+          <article class="app-card is-discontinued reveal" aria-labelledby="app-hive-name">
+            <div class="app-card-header">
+              <div class="app-icon app-icon-hive" aria-hidden="true">🐝</div>
+              <div class="app-card-info">
+                <div class="app-title-row">
+                  <h3 class="app-name" id="app-hive-name">Hive</h3>
+                </div>
+                <div class="app-category" data-i18n="hive.category">Comunicação · Protótipo P2P (Encerrado)</div>
+              </div>
+            </div>
+            <div class="app-status-pill app-status-discontinued">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              <span data-i18n="status.discontinued">DESCONTINUADO · Sem versão estável</span>
+            </div>
+            <p class="app-description" data-i18n="hive.desc">
+              Protótipo experimental de chat P2P descentralizado sobre GunDB. Projeto oficialmente descontinuado — não terá versão estável, publicação na loja nem atualizações futuras. Sua proposta foi integralmente substituída do zero pelo NyxMesh.
+            </p>
+            <div class="app-card-footer">
+              <span class="app-btn app-btn-discontinued" id="hive-discontinued-badge" aria-disabled="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                <span data-i18n="app.btn.discontinued">Sem versão estável</span>
+              </span>
+              <a href="https://github.com/BernardoMancia/Hive" target="_blank" rel="noopener noreferrer" class="app-btn app-btn-github" id="hive-github-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+              <a href="policies/hive-chat/" class="app-btn app-btn-policy" id="hive-policy-link" aria-label="Aviso de encerramento e política do Hive">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="app.policy.btn">Política</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ══════════════════════════════════════════════════
+         SEÇÃO 3 — PROJETOS DESENVOLVIDOS (#projects)
+         ══════════════════════════════════════════════════ -->
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-label reveal" data-i18n="projects.label">Engenharia &amp; Sistemas</p>
+        <h2 class="section-title reveal reveal-delay-1" id="projects-heading" data-i18n="projects.title">Projetos desenvolvidos</h2>
+        <p class="section-subtitle reveal reveal-delay-2" data-i18n="projects.subtitle">
+          Sistemas backend, plataformas de cibersegurança, automações e aplicações web públicas construídas com Python, arquitetura limpa e segurança.
+        </p>
+
+        <div class="projects-filters reveal" id="projects-filters" role="toolbar" aria-label="Filtrar projetos">
+          <button type="button" class="filter-pill active" data-filter="all" aria-pressed="true" data-i18n="filter.all">Todos</button>
+          <button type="button" class="filter-pill" data-filter="ready" aria-pressed="false" data-i18n="filter.ready">Em Produção &amp; Estáveis</button>
+          <button type="button" class="filter-pill" data-filter="wip" aria-pressed="false" data-i18n="filter.wip">Em Desenvolvimento &amp; WIP</button>
+          <button type="button" class="filter-pill" data-filter="github" aria-pressed="false" data-i18n="filter.github">Código Aberto (GitHub)</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- 1. Aegis Endpoint Defense -->
+          <article class="project-card status-stable reveal" data-category="ready github">
+            <div class="project-top">
+              <div class="project-icon">🛡️</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">Aegis Endpoint Defense</h3>
+            <p class="project-desc" data-i18n="proj.aegis.desc">
+              Plataforma EDR/SIEM Next-Gen desenvolvida do zero em Python para monitoramento e resposta a ameaças em endpoints — arquitetura C2 própria, telemetria forense e análise heurística assistida por IA.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">EDR / SIEM</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/aegis-endpoint-defense" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. AegisCVE-Radar -->
+          <article class="project-card status-stable reveal" data-category="ready github">
+            <div class="project-top">
+              <div class="project-icon">📡</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">AegisCVE-Radar</h3>
+            <p class="project-desc" data-i18n="proj.cve.desc">
+              Radar contínuo de inteligência de ameaças e vulnerabilidades CVE — coleta automatizada, correlação de severidade e alerta rápido para acompanhamento de exposições críticas de segurança.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Threat Intel</span>
+              <span class="project-tag">CVE</span>
+              <span class="project-tag">Automação</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/AegisCVE-Radar" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. Córtex IA (#4) -->
+          <article class="project-card status-prod reveal" data-category="ready github">
+            <div class="project-top">
+              <div class="project-icon">📈</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">Córtex IA (B3)</h3>
+            <p class="project-desc" data-i18n="proj.cortexia.desc">
+              Ecossistema quantitativo autônomo para o mercado brasileiro B3 — combina análise técnica algorítmica, leitura de sentimento de notícias financeiras via NLP e travas estritas de gestão de risco.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">NLP / Quant</span>
+              <span class="project-tag">B3</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/cortex-ia" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. Córtex Cripto (#5) -->
+          <article class="project-card status-prod reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">🪙</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">Córtex Cripto</h3>
+            <p class="project-desc" data-i18n="proj.cortexcripto.desc">
+              Plataforma quantitativa multiusuário 24/7 para criptoativos Spot (BRL e USDT) — leitura patrimonial em tempo real, dashboards analíticos de performance e governança automatizada de exposição.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">Quant Engine</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 5. OfferFlow (#6) -->
+          <article class="project-card status-prod reveal" data-category="ready github">
+            <div class="project-top">
+              <div class="project-icon">
+                <img src="assets/img/offerflow/hub.jpg" alt="OfferFlow" class="project-icon-img" width="38" height="38" loading="lazy" />
+              </div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">OfferFlow</h3>
+            <p class="project-desc" data-i18n="proj.offerflow.desc">
+              Comunidade oficial de curadoria 100% Mercado Livre Afiliados no Telegram (Hub central + 8 canais temáticos): produtos novos/recondicionados, vendedores reputação Verde/Amarela, alertas de preço (/alerta), gráficos de histórico e acesso responsivo em PC, Celular e Tablet.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Mercado Livre</span>
+              <span class="project-tag">Telegram Hub</span>
+              <span class="project-tag">8 Canais</span>
+            </div>
+            <div class="project-actions">
+              <a href="offerflow/" class="project-btn project-btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span data-i18n="proj.community">Acessar comunidade</span>
+              </a>
+              <a href="https://t.me/ComunidadeOfferFlow" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                Telegram
+              </a>
+              <a href="https://github.com/BernardoMancia/OfferFlow" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- 6. TechOS (#7) -->
+          <article class="project-card status-stable reveal" data-category="ready github">
+            <div class="project-top">
+              <div class="project-icon">🔧</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">TechOS — Assistência Técnica</h3>
+            <p class="project-desc" data-i18n="proj.techos.desc">
+              Sistema web full-stack para gestão de Assistência Técnica e Ordens de Serviço — controle de clientes, equipamentos, estoque de peças, orçamentos, histórico de status e acompanhamento público.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">SQLAlchemy</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://github.com/BernardoMancia/TechOS-Assistencia-Tecnica" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- 7. VeilGuard (#14) -->
+          <article class="project-card status-prod reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">🔰</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">VeilGuard</h3>
+            <p class="project-desc" data-i18n="proj.veilguard.desc">
+              Sistema automatizado de proteção e moderação inteligente para comunidades no Telegram — defesa proativa anti-spam/anti-raid, verificação contextual e fluxos rápidos de governança.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Telegram Bot</span>
+              <span class="project-tag">Anti-Raid</span>
+              <span class="project-tag">SQLite</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 8. Kitsune Game Hub (#16) -->
+          <article class="project-card status-prod reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">🦊</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">Kitsune Game Hub</h3>
+            <p class="project-desc" data-i18n="proj.kitsuhub.desc">
+              Ecossistema multi-jogos para Discord com Discord Activity híbrido em até 4K 60fps e áudio integrado direto na chamada, bot de música multi-canal e motores interativos.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">Discord SDK</span>
+              <span class="project-tag">WebRTC</span>
+              <span class="project-tag">Áudio HD</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 9. Auto-Yiff (#24) -->
+          <article class="project-card status-prod reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">⚡</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">Auto-Yiff</h3>
+            <p class="project-desc" data-i18n="proj.autoyiff.desc">
+              Pipeline assíncrono em FastAPI + Telegram Bot para curadoria e distribuição automatizada de mídias — gerenciamento de filas prioritárias, álbuns, ciclos agendados e estado SSE em tempo real.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">APScheduler</span>
+              <span class="project-tag">SSE</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 10. Relógio Tempo de Planck (#30a) -->
+          <article class="project-card status-stable reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">⚛️</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">Relógio Tempo de Planck</h3>
+            <p class="project-desc" data-i18n="proj.planck.desc">
+              Aplicação multiplataforma (Desktop Electron &amp; Mobile) que converte horários, alarmes, cronômetros e contagens regressivas humanas para unidades físicas reais de Tempo de Planck (CODATA 2022).
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Electron</span>
+              <span class="project-tag">Vite</span>
+              <span class="project-tag">Física Quântica</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 11. Google Drive Watchdog & VsCodeMusic (#30b/c) -->
+          <article class="project-card status-stable reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">🛠️</div>
+              <span class="project-status status-stable" data-i18n="status.stable">Versão estável</span>
+            </div>
+            <h3 class="project-name">Drive Watchdog &amp; VsCodeMusic</h3>
+            <p class="project-desc" data-i18n="proj.devtools.desc">
+              Conjunto autoral de ferramentas locais: monitor silencioso de auto-reparo para Google Drive Desktop (GoogleDrive-Watchdog) e ambiente de live-coding musical algorítmico (VsCodeMusic / Strudel).
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">PowerShell</span>
+              <span class="project-tag">Strudel / Tidal</span>
+              <span class="project-tag">Windows</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 12. FurryCore Network (#8 — Em produção, repositório privado) -->
+          <article class="project-card status-prod reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">🐾</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">FurryCore Network</h3>
+            <p class="project-desc" data-i18n="proj.furrycore.desc">
+              Ecossistema web modular v4.0 containerizado em Docker (furrycore.com.br): Hub público, Passaporte FurPass 3D com Multi-Fursona DNA e Sparks, rede social Boop 4-em-1 (Clips, Radar ±100m, Comunidades, Eventos, Chat Direct e Comissões Kanban), Loja Oficial e validação automática +18 com Retenção Zero (ECA Digital &amp; LGPD).
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python / Flask</span>
+              <span class="project-tag">FurPass &amp; Boop</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">ECA Digital / LGPD</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://furrycore.com.br" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span data-i18n="proj.visit_site">Acessar site</span>
+              </a>
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 12b. Delphye Luke 3D (Em produção — Vitrine Pública) -->
+          <article class="project-card status-prod reveal" data-category="ready">
+            <div class="project-top">
+              <div class="project-icon">🖨️</div>
+              <span class="project-status status-prod" data-i18n="status.prod">Em produção</span>
+            </div>
+            <h3 class="project-name">Delphye Luke 3D</h3>
+            <p class="project-desc" data-i18n="proj.delphye3d.desc">
+              Plataforma web full-stack de impressão 3D sob medida (delphyeluke3d.com.br): catálogo público interativo com modelos 3D e fotos reais, fila de impressão em tempo real, motor inteligente de precificação (.3MF, energia e canais de venda) e gestão híbrida de filamentos.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React / Vite</span>
+              <span class="project-tag">Node.js / Express</span>
+              <span class="project-tag">PostgreSQL / Prisma</span>
+              <span class="project-tag">Impressão 3D</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://delphyeluke3d.com.br" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-github">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span data-i18n="proj.visit">Acessar vitrine</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 13. Telemetria de Sinais Vitais (#26 — Em ajustes) -->
+          <article class="project-card status-tuning reveal" data-category="wip">
+            <div class="project-top">
+              <div class="project-icon">⌚</div>
+              <span class="project-status status-tuning" data-i18n="status.tuning">Em ajustes</span>
+            </div>
+            <h3 class="project-name">Telemetria de Sinais Vitais</h3>
+            <p class="project-desc" data-i18n="proj.vitals.desc">
+              Sistema de telemetria e monitoramento contínuo de sinais vitais integrado a dispositivos vestíveis (smartwatch) com alertas e visualização histórica — atualmente em fase de ajustes finos.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Wearables</span>
+              <span class="project-tag">Telemetria</span>
+              <span class="project-tag">Saúde</span>
+              <span class="project-tag">Alertas</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 14. LukeFlix (#17 — Work in Progress) -->
+          <article class="project-card status-wip reveal" data-category="wip">
+            <div class="project-top">
+              <div class="project-icon">🎞️</div>
+              <span class="project-status status-wip" data-i18n="status.wip">Work in Progress</span>
+            </div>
+            <h3 class="project-name">LukeFlix</h3>
+            <p class="project-desc" data-i18n="proj.lukeflix.desc">
+              Plataforma autoral de catálogo e streaming sob demanda com sincronização de progresso, perfis e reprodução adaptativa — projeto ativo ainda em Work in Progress.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Streaming</span>
+              <span class="project-tag">Web App</span>
+              <span class="project-tag">Catálogo</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 15. WolfTV (#18 — Work in Progress) -->
+          <article class="project-card status-wip reveal" data-category="wip">
+            <div class="project-top">
+              <div class="project-icon">🐺</div>
+              <span class="project-status status-wip" data-i18n="status.wip">Work in Progress</span>
+            </div>
+            <h3 class="project-name">WolfTV — Smart TV Engine</h3>
+            <p class="project-desc" data-i18n="proj.wolftv.desc">
+              Media center multiplataforma de alta performance com motor core em Rust + WebAssembly e interface Enact/React para Smart TVs LG webOS, Samsung Tizen e Android TV — em Work in Progress.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Rust</span>
+              <span class="project-tag">WebAssembly</span>
+              <span class="project-tag">Enact / React</span>
+              <span class="project-tag">webOS &amp; Tizen</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- 16. Badge Digital ESP32-S3 & WiFi Scanner (#27 — Em desenvolvimento) -->
+          <article class="project-card status-dev reveal" data-category="wip">
+            <div class="project-top">
+              <div class="project-icon">🔌</div>
+              <span class="project-status status-dev" data-i18n="status.dev">Em desenvolvimento</span>
+            </div>
+            <h3 class="project-name">Badge Digital ESP32-S3 &amp; WiFi Scanner</h3>
+            <p class="project-desc" data-i18n="proj.iot.desc">
+              Engenharia embarcada com ESP32-S3: Badge Digital Interativa (PCB 4 camadas, FreeRTOS Dual-Core, tela touch 60fps, áudio I2S e BLE/Wi-Fi Direct) e scanner dedicado de redes sem fio.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">ESP32-S3</span>
+              <span class="project-tag">FreeRTOS / C++</span>
+              <span class="project-tag">Hardware PCB</span>
+              <span class="project-tag">BLE / Wi-Fi</span>
+            </div>
+            <div class="project-actions">
+              <span class="project-btn project-btn-nogit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span data-i18n="proj.nogit">Código proprietário</span>
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-wrapper">
+          <p class="section-label reveal" data-i18n="contact.label">Contato</p>
+          <h2 class="section-title reveal reveal-delay-1" id="contact-heading" data-i18n="contact.title">Vamos conversar</h2>
+          <p class="section-subtitle reveal reveal-delay-2" style="margin:0 auto;" data-i18n="contact.subtitle">
+            Tem um projeto de software, demanda de segurança/backend ou parceria mobile?
+            Entre em contato diretamente por e-mail.
+          </p>
+          <div class="social-grid reveal reveal-delay-3" role="list" aria-label="Links de contato">
+            <a href="mailto:contato@manciastudios.com" class="social-link" id="contact-email" role="listitem" aria-label="Enviar email para contato@manciastudios.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              contato@manciastudios.com
+            </a>
+            <a href="https://github.com/BernardoMancia" target="_blank" rel="noopener noreferrer" class="social-link" id="contact-github" role="listitem" aria-label="GitHub BernardoMancia">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+              github.com/BernardoMancia
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-left">
+          © <span id="footer-year" class="js-current-year">2026</span> Mancia Studios. <span data-i18n="footer.credit">Feito com ☕ no Brasil.</span>
+        </p>
+        <ul class="footer-links" role="list" aria-label="Links do rodapé">
+          <li><a href="policies/nyxmesh/" id="footer-policy-nyxmesh" data-i18n="footer.policy.nyxmesh">Política — NyxMesh</a></li>
+          <li><a href="policies/lupystudio/" id="footer-policy-lupystudio" data-i18n="footer.policy.lupystudio">Política — Lupy Studio</a></li>
+          <li><a href="policies/boop/" id="footer-policy-boop" data-i18n="footer.policy.boop">Política — Boop</a></li>
+          <li><a href="policies/guardalinha/" id="footer-policy-guardalinha" data-i18n="footer.policy.guardalinha">Política — GuardaLinha (Obsoleto)</a></li>
+          <li><a href="policies/sentio/" id="footer-policy-sentio" data-i18n="footer.policy.sentio">Política — Sentio (Obsoleto)</a></li>
+          <li><a href="policies/hive-chat/" id="footer-policy-hive" data-i18n="footer.policy.hive">Política — Hive (Descontinuado)</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/translations.js?v=3.2.0"></script>
+  <script src="assets/js/i18n.js?v=3.2.0"></script>
+  <script src="assets/js/main.js?v=3.2.0"></script>
+</body>
+</html>

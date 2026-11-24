@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-i18n-page="offerflow">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>OfferFlow — Comunidade de Ofertas Verificadas no Mercado Livre · Mancia Studios</title>
+  <meta name="description" content="Comunidade OfferFlow: 8 canais de ofertas verificadas 100% Mercado Livre no Telegram com produtos novos/recondicionados, vendedores reputação Verde/Amarela, alertas de preço e acesso em PC, Celular e Tablet." />
+  <meta name="theme-color" content="#080B12" />
+
+  <meta property="og:title" content="OfferFlow — Comunidade Oficial de Ofertas ML" />
+  <meta property="og:description" content="Hub central + 8 canais de categorias comissionáveis do Mercado Livre com alertas de queda de preço. Acesse no PC, Celular ou Tablet." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://manciastudios.com/offerflow/" />
+  <meta property="og:image" content="https://manciastudios.com/assets/img/offerflow/hub.jpg" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="canonical" href="https://manciastudios.com/offerflow/" />
+  <link rel="icon" type="image/jpeg" href="../assets/img/offerflow/hub.jpg" />
+  <link rel="stylesheet" href="../assets/css/global.css?v=3.2.0" />
+
+  <style>
+    :root {
+      --of-gold: #FFE600;
+      --of-gold-soft: rgba(255, 230, 0, 0.14);
+      --of-gold-border: rgba(255, 230, 0, 0.34);
+      --of-gold-glow: 0 0 36px rgba(255, 230, 0, 0.22);
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .of-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 11, 18, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: calc(14px + env(safe-area-inset-top, 0px)) 0 14px;
+    }
+
+    .of-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
+    .of-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+
+    .of-back:hover {
+      border-color: var(--of-gold-border);
+      color: var(--of-gold);
+    }
+
+    .of-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .of-hero {
+      position: relative;
+      padding: clamp(48px, 8vw, 96px) 0 clamp(40px, 6vw, 72px);
+      overflow: hidden;
+    }
+
+    .of-hero-glow {
+      position: absolute;
+      width: min(560px, 90vw);
+      height: min(560px, 90vw);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 230, 0, 0.11), rgba(0, 245, 255, 0.05) 45%, transparent 72%);
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      filter: blur(24px);
+    }
+
+    .of-hero-box {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .of-emblem-wrap {
+      width: clamp(84px, 14vw, 112px);
+      height: clamp(84px, 14vw, 112px);
+      border-radius: 26px;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--of-gold), var(--accent-cyan));
+      box-shadow: var(--of-gold-glow);
+      margin-bottom: 22px;
+    }
+
+    .of-emblem {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 23px;
+      background: #0B1020;
+    }
+
+    .of-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--of-gold-soft);
+      border: 1px solid var(--of-gold-border);
+      color: var(--of-gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+      max-width: 100%;
+    }
+
+    .of-title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 5.5vw, 54px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .of-title .gold {
+      background: linear-gradient(135deg, var(--of-gold) 0%, #FFF4A3 48%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .of-lead {
+      font-size: clamp(15px, 2.2vw, 18px);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .of-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .of-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      text-align: center;
+    }
+
+    .of-btn-gold {
+      background: linear-gradient(135deg, var(--of-gold), #F59E0B);
+      color: #080B12;
+      box-shadow: 0 6px 26px rgba(255, 230, 0, 0.28);
+    }
+
+    .of-btn-gold:hover {
+      color: #080B12;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 34px rgba(255, 230, 0, 0.42);
+    }
+
+    .of-btn-cyan {
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.32);
+      color: var(--accent-cyan);
+    }
+
+    .of-btn-cyan:hover {
+      background: rgba(0, 245, 255, 0.18);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .of-btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-primary);
+    }
+
+    .of-btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .of-trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+      margin-top: 26px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .of-trust-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .of-section {
+      padding: clamp(44px, 6vw, 72px) 0;
+    }
+
+    .of-section-head {
+      margin-bottom: 28px;
+    }
+
+    .of-devices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .of-device-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .of-device-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 245, 255, 0.08);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .of-device-title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .of-device-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .of-channels-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .of-ch-card {
+      background: var(--bg-surface);
+      backdrop-filter: var(--blur-glass);
+      -webkit-backdrop-filter: var(--blur-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+      transition: all var(--transition-smooth);
+    }
+
+    .of-ch-card:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--of-gold-border);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    .of-ch-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .of-ch-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 230, 0, 0.22);
+      background: #0B1020;
+    }
+
+    .of-ch-meta {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .of-ch-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .of-ch-badge {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .of-ch-badge.direct {
+      background: rgba(0, 255, 148, 0.1);
+      border: 1px solid rgba(0, 255, 148, 0.28);
+      color: var(--accent-green);
+    }
+
+    .of-ch-badge.via-hub {
+      background: var(--of-gold-soft);
+      border: 1px solid var(--of-gold-border);
+      color: var(--of-gold);
+    }
+
+    .of-ch-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .of-ch-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      background: rgba(0, 245, 255, 0.08);
+      border: 1px solid rgba(0, 245, 255, 0.24);
+      color: var(--accent-cyan);
+      transition: all var(--transition-fast);
+    }
+
+    .of-ch-cta:hover {
+      background: rgba(0, 245, 255, 0.16);
+      color: #fff;
+    }
+
+    .of-ch-cta.hub-cta {
+      background: var(--of-gold-soft);
+      border-color: var(--of-gold-border);
+      color: var(--of-gold);
+    }
+
+    .of-ch-cta.hub-cta:hover {
+      background: rgba(255, 230, 0, 0.22);
+      color: #fff;
+    }
+
+    .of-bot-box {
+      background: linear-gradient(135deg, rgba(255, 230, 0, 0.05), rgba(0, 245, 255, 0.04));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: clamp(22px, 4vw, 36px);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .of-cmd-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .of-cmd-item {
+      background: rgba(8, 11, 18, 0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .of-cmd-item code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--of-gold);
+      word-break: break-word;
+    }
+
+    .of-cmd-item span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .of-footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 calc(28px + env(safe-area-inset-bottom, 0px));
+      margin-top: 24px;
+    }
+
+    .of-footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .of-footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .of-footer-links a {
+      color: var(--text-secondary);
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .of-footer-links a:hover {
+      color: var(--of-gold);
+    }
+
+    /* Tablet (601px - 1024px) */
+    @media (max-width: 1024px) {
+      .of-channels-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .of-bot-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .of-devices-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Mobile (<= 600px) */
+    @media (max-width: 600px) {
+      .of-devices-grid,
+      .of-channels-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .of-actions {
+        flex-direction: column;
+      }
+
+      .of-btn {
+        width: 100%;
+      }
+
+      .of-ch-card {
+        padding: 18px;
+      }
+
+      .of-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (hover: none) {
+      .of-ch-card:hover,
+      .of-btn:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="of-nav" aria-label="Navegação OfferFlow">
+    <div class="container">
+      <div class="of-nav-inner">
+        <a href="../#projects" class="of-back" aria-label="Voltar para Mancia Studios">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Mancia Studios</span>
+        </a>
+        <div class="of-nav-right">
+          <div class="lang-switch" id="lang-switch" role="switch" aria-checked="false" onclick="toggleLang()" data-lang="pt" tabindex="0" aria-label="Idioma: Português — clique para English">
+            <span class="lang-opt">PT</span>
+            <span class="lang-opt">EN</span>
+            <div class="lang-pill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="of-hero" aria-labelledby="of-hero-title">
+      <div class="of-hero-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="of-hero-box">
+          <div class="of-emblem-wrap">
+            <img src="../assets/img/offerflow/hub.jpg" alt="OfferFlow" class="of-emblem" width="112" height="112" />
+          </div>
+          <span class="of-pill" data-i18n="of.hero.badge">⚡ 100% Mercado Livre · PC, Celular &amp; Tablet</span>
+          <h1 class="of-title" id="of-hero-title">
+            <span data-i18n="of.hero.title1">Comunidade</span> <span class="gold">OfferFlow</span>
+          </h1>
+          <p class="of-lead" data-i18n="of.hero.subtitle">
+            Curadoria automática de ofertas verificadas no Mercado Livre organizada em 8 canais temáticos no Telegram — apenas produtos novos ou recondicionados, vendedores reputação Verde ou Amarela, alertas personalizados e histórico de preços.
+          </p>
+          <div class="of-actions">
+            <a href="https://t.me/ComunidadeOfferFlow" target="_blank" rel="noopener noreferrer" class="of-btn of-btn-gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+              <span data-i18n="of.cta.hub">Entrar na Comunidade (Telegram)</span>
+            </a>
+            <a href="https://t.me/OfferFlowMLBot" target="_blank" rel="noopener noreferrer" class="of-btn of-btn-cyan">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span data-i18n="of.cta.bot">Criar Alertas (@OfferFlowMLBot)</span>
+            </a>
+            <a href="https://github.com/BernardoMancia/OfferFlow" target="_blank" rel="noopener noreferrer" class="of-btn of-btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+          <div class="of-trust-strip" role="list">
+            <span class="of-trust-item" role="listitem">✅ <span data-i18n="of.trust.1">Produtos Novos ou Recondicionados</span></span>
+            <span class="of-trust-item" role="listitem">🏅 <span data-i18n="of.trust.2">Vendedores Reputação Verde/Amarela</span></span>
+            <span class="of-trust-item" role="listitem">⚡ <span data-i18n="of.trust.3">Links Oficiais Mercado Livre (meli.la)</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <section class="of-section" aria-labelledby="of-devices-heading">
+      <div class="container">
+        <div class="of-section-head">
+          <p class="section-label" data-i18n="of.devices.label">Multiplataforma</p>
+          <h2 class="section-title" id="of-devices-heading" data-i18n="of.devices.title">Funciona em qualquer dispositivo</h2>
+          <p class="section-subtitle" data-i18n="of.devices.subtitle">
+            Acompanhe as ofertas, ative alertas de preço e abra os descontos direto no Mercado Livre pelo aparelho que preferir.
+          </p>
+        </div>
+        <div class="of-devices-grid">
+          <article class="of-device-card">
+            <div class="of-device-icon" aria-hidden="true">📱</div>
+            <h3 class="of-device-title" data-i18n="of.dev.mobile.title">Celular (Android &amp; iOS)</h3>
+            <p class="of-device-desc" data-i18n="of.dev.mobile.desc">
+              Receba alertas push instantâneos no app do Telegram e abra os links oficiais direto no aplicativo do Mercado Livre com um toque.
+            </p>
+          </article>
+          <article class="of-device-card">
+            <div class="of-device-icon" aria-hidden="true">📲</div>
+            <h3 class="of-device-title" data-i18n="of.dev.tablet.title">Tablet (iPadOS &amp; Android)</h3>
+            <p class="of-device-desc" data-i18n="of.dev.tablet.desc">
+              Navegue entre os 8 canais em tela dividida, modo retrato ou paisagem, comparando gráficos de histórico e cupons com conforto.
+            </p>
+          </article>
+          <article class="of-device-card">
+            <div class="of-device-icon" aria-hidden="true">💻</div>
+            <h3 class="of-device-title" data-i18n="of.dev.pc.title">PC (Windows, macOS &amp; Linux)</h3>
+            <p class="of-device-desc" data-i18n="of.dev.pc.desc">
+              Use pelo Telegram Desktop ou direto no navegador (Telegram Web) — sem precisar instalar extensões ou aplicativos adicionais.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <section class="of-section" id="canais" aria-labelledby="of-channels-heading">
+      <div class="container">
+        <div class="of-section-head">
+          <p class="section-label" data-i18n="of.channels.label">8 Canais Organizados</p>
+          <h2 class="section-title" id="of-channels-heading" data-i18n="of.channels.title">Escolha suas categorias favoritas</h2>
+          <p class="section-subtitle" data-i18n="of.channels.subtitle">
+            Entre diretamente nos canais públicos abaixo ou acesse a Comunidade Hub para desbloquear todos os 8 canais com um clique.
+          </p>
+        </div>
+
+        <div class="of-channels-grid">
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/ofertas_bugs.jpg" alt="Ofertas Relâmpago &amp; Bugs" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.bugs.name">🔥 Ofertas Relâmpago &amp; Bugs</h3>
+                <span class="of-ch-badge via-hub" data-i18n="of.badge.hub">Via Comunidade Hub</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.bugs.desc">Super descontos, quedas históricas acima de 45% OFF e cupons relâmpago em tempo real.</p>
+            <a href="https://t.me/ComunidadeOfferFlow" target="_blank" rel="noopener noreferrer" class="of-ch-cta hub-cta" data-i18n="of.btn.via_hub">Acessar pela Comunidade</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/tech_celulares.jpg" alt="Tech, Informática &amp; Celulares" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.tech.name">💻 Tech, Informática &amp; Celulares</h3>
+                <span class="of-ch-badge direct" data-i18n="of.badge.direct">Canal Público</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.tech.desc">Smartphones, notebooks, hardware PC, monitores, fones, áudio, vídeo e câmeras.</p>
+            <a href="https://t.me/OfferFlowTechML" target="_blank" rel="noopener noreferrer" class="of-ch-cta" data-i18n="of.btn.join">Entrar no canal</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/games_geek.jpg" alt="Games, Brinquedos &amp; Livros" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.games.name">🎮 Games, Brinquedos &amp; Livros</h3>
+                <span class="of-ch-badge direct" data-i18n="of.badge.direct">Canal Público</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.games.desc">Consoles, controles, jogos físicos, LEGO, board games, brinquedos e livros/HQs novos.</p>
+            <a href="https://t.me/OfferFlowGames" target="_blank" rel="noopener noreferrer" class="of-ch-cta" data-i18n="of.btn.join">Entrar no canal</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/casa_eletro.jpg" alt="Casa, Eletro &amp; Cozinha" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.casa.name">🏠 Casa, Eletro &amp; Cozinha</h3>
+                <span class="of-ch-badge direct" data-i18n="of.badge.direct">Canal Público</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.casa.desc">Airfryers, cafeteiras, eletrodomésticos, aspiradores, móveis e decoração.</p>
+            <a href="https://t.me/OfferFlowCasa" target="_blank" rel="noopener noreferrer" class="of-ch-cta" data-i18n="of.btn.join">Entrar no canal</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/ferramentas_construcao.jpg" alt="Ferramentas &amp; Construção" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.tools.name">🛠️ Ferramentas &amp; Construção</h3>
+                <span class="of-ch-badge direct" data-i18n="of.badge.direct">Canal Público</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.tools.desc">Furadeiras, parafusadeiras, kits de ferramentas, iluminação e materiais de obra.</p>
+            <a href="https://t.me/OfferFlowFerramentas" target="_blank" rel="noopener noreferrer" class="of-ch-cta" data-i18n="of.btn.join">Entrar no canal</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/moda_relogios.jpg" alt="Moda, Calçados &amp; Relógios" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.moda.name">👟 Moda, Calçados &amp; Relógios</h3>
+                <span class="of-ch-badge direct" data-i18n="of.badge.direct">Canal Público</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.moda.desc">Tênis, calçados, roupas, mochilas, bolsas, óculos, joias e relógios originais.</p>
+            <a href="https://t.me/OfferFlowModa" target="_blank" rel="noopener noreferrer" class="of-ch-cta" data-i18n="of.btn.join">Entrar no canal</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/beleza_esportes.jpg" alt="Beleza, Saúde &amp; Esportes" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.beleza.name">💄 Beleza, Saúde &amp; Esportes</h3>
+                <span class="of-ch-badge via-hub" data-i18n="of.badge.hub">Via Comunidade Hub</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.beleza.desc">Perfumes, skincare, cuidados capilares, bem-estar, academia, bikes e esportes &amp; fitness.</p>
+            <a href="https://t.me/ComunidadeOfferFlow" target="_blank" rel="noopener noreferrer" class="of-ch-cta hub-cta" data-i18n="of.btn.via_hub">Acessar pela Comunidade</a>
+          </article>
+
+          <article class="of-ch-card">
+            <div class="of-ch-head">
+              <img src="../assets/img/offerflow/pet_bebes_papelaria.jpg" alt="Pet, Bebês &amp; Papelaria" class="of-ch-avatar" width="54" height="54" loading="lazy" />
+              <div class="of-ch-meta">
+                <h3 class="of-ch-name" data-i18n="of.ch.pet.name">🐾 Pet, Bebês &amp; Papelaria</h3>
+                <span class="of-ch-badge via-hub" data-i18n="of.badge.hub">Via Comunidade Hub</span>
+              </div>
+            </div>
+            <p class="of-ch-desc" data-i18n="of.ch.pet.desc">Rações e acessórios Pet Shop, enxoval e fraldas para Bebês, papelaria, festas e música.</p>
+            <a href="https://t.me/ComunidadeOfferFlow" target="_blank" rel="noopener noreferrer" class="of-ch-cta hub-cta" data-i18n="of.btn.via_hub">Acessar pela Comunidade</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <section class="of-section" aria-labelledby="of-bot-heading">
+      <div class="container">
+        <div class="of-bot-box">
+          <div>
+            <p class="section-label" data-i18n="of.bot.label">Assistente Pessoal</p>
+            <h2 class="section-title" id="of-bot-heading" data-i18n="of.bot.title">Alertas e gráficos no @OfferFlowMLBot</h2>
+            <p class="section-subtitle" style="margin-bottom: 22px;" data-i18n="of.bot.subtitle">
+              Quer monitorar um produto específico sem ficar olhando a tela o dia todo? Cadastre alertas de preço no bot e receba aviso privado na hora que baixar.
+            </p>
+            <a href="https://t.me/OfferFlowMLBot" target="_blank" rel="noopener noreferrer" class="of-btn of-btn-cyan">
+              <span data-i18n="of.bot.cta">Iniciar @OfferFlowMLBot</span>
+            </a>
+          </div>
+          <ul class="of-cmd-list">
+            <li class="of-cmd-item">
+              <code>/alerta rtx 4060 1900</code>
+              <span data-i18n="of.cmd.1">Cria um alerta pessoal para receber aviso privado quando surgir oferta abaixo do valor alvo.</span>
+            </li>
+            <li class="of-cmd-item">
+              <code>/meus_alertas</code>
+              <span data-i18n="of.cmd.2">Lista e gerencia todos os seus alertas ativos em qualquer dispositivo.</span>
+            </li>
+            <li class="of-cmd-item">
+              <code>/historico airfryer</code>
+              <span data-i18n="of.cmd.3">Gera o gráfico de evolução de preços para validar se o desconto é real.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="of-footer" role="contentinfo">
+    <div class="container">
+      <div class="of-footer-inner">
+        <p>© <span id="footer-year" class="js-current-year">2026</span> Mancia Studios · OfferFlow</p>
+        <ul class="of-footer-links" role="list">
+          <li><a href="../" data-i18n="of.footer.home">Voltar ao portfólio</a></li>
+          <li><a href="https://t.me/ComunidadeOfferFlow" target="_blank" rel="noopener noreferrer">Comunidade Telegram</a></li>
+          <li><a href="https://github.com/BernardoMancia/OfferFlow" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/translations.js?v=3.2.0"></script>
+  <script src="../assets/js/i18n.js?v=3.2.0"></script>
+</body>
+</html>
